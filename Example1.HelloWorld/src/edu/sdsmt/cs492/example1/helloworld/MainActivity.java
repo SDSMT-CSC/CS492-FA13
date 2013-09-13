@@ -15,7 +15,7 @@ public class MainActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		Log.d(HelloWorldApp.TAG, "onCreate() called");
+		Log.d(HelloWorldApp.TAG, "MainActivity onCreate() called");
 		
 	}
 

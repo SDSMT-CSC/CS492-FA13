@@ -1,6 +1,7 @@
 package edu.sdsmt.cs492.example1.helloworld.common;
 
 import android.app.Application;
+import android.util.Log;
 
 public class HelloWorldApp extends Application
 {
@@ -15,6 +16,8 @@ public class HelloWorldApp extends Application
 		super.onCreate();
 		
 		_instance = this;
+		
+		Log.d(TAG, "HelloWorldApp onCreate() called");
 	}
 	
 	public static HelloWorldApp getInstance()
