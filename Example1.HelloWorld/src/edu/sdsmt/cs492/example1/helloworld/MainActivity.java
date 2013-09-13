@@ -1,7 +1,7 @@
-package edu.sdsmt.cs492.example1_helloworld;
+package edu.sdsmt.cs492.example1.helloworld;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
 
 public class MainActivity extends Activity
