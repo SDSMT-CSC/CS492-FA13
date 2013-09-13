@@ -1,7 +1,9 @@
 package edu.sdsmt.cs492.example1.helloworld;
 
+import edu.sdsmt.cs492.example1.helloworld.common.HelloWorldApp;
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 
 public class MainActivity extends Activity
@@ -12,6 +14,9 @@ public class MainActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		Log.d(HelloWorldApp.TAG, "onCreate() called");
+		
 	}
 
 	@Override
