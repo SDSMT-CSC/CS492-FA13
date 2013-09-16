@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Example3.AsyncTask</string>
+    <string name="action_settings">Settings</string>
+    <string name="buttonExecute">Execute</string>
+    <string name="textValueCounterDefault">1</string>
+
+</resources>
