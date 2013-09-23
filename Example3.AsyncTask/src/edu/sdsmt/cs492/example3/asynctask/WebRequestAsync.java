@@ -23,6 +23,7 @@ public class WebRequestAsync extends AsyncTask<Integer, String, String>
 	{
 		super.onPreExecute();
 		
+		// Call appropriate listener method defined on interface.
 		_listener.onWebRequestStart();
 	}
 
