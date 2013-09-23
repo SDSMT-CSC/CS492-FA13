@@ -6,26 +6,52 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+    tools:context=".ActivityMain" >
 
     <Button
         android:id="@+id/buttonExecute"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:gravity="center"
-        android:text="@string/buttonExecute" />
+        android:text="@string/buttonSimulateWebCall" />
+
+    <TextView
+        android:id="@+id/textViewWebCounter"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonExecute"
+        android:layout_below="@+id/buttonExecute"
+        android:paddingTop="10dp"
+        android:text="@string/textValueCounterDefault"
+        android:textSize="72sp" />
+
+    <Button
+        android:id="@+id/buttonUpdateView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewWebCounter"
+        android:layout_below="@+id/textViewWebCounter"
+        android:paddingTop="10dp"
+        android:gravity="center"
+        android:text="@string/buttonUpdateView" />
 
     <TextView
         android:id="@+id/textViewCounter"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonUpdateView"
+        android:layout_below="@+id/buttonUpdateView"
+        android:paddingTop="10dp"
+        android:text="@string/textValueCounterDefault"
+        android:textSize="72sp" />
+
+    <CheckBox
+        android:id="@+id/checkBoxUseAsync"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/buttonExecute"
-        android:paddingTop="10dp"
-        android:textSize="72sp"
-        android:text="@string/textValueCounterDefault" />
+        android:layout_alignLeft="@+id/textViewCounter"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:text="@string/checkBoxUseAsync" />
 
 </RelativeLayout>

@@ -3,7 +3,9 @@
 
     <string name="app_name">Example3.AsyncTask</string>
     <string name="action_settings">Settings</string>
-    <string name="buttonExecute">Execute</string>
+    <string name="buttonSimulateWebCall">Simulate Web Call</string>
     <string name="textValueCounterDefault">1</string>
+    <string name="buttonUpdateView">Update View Counter</string>
+    <string name="checkBoxUseAsync">Use Async</string>
 
 </resources>
