@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class Model1
 {
-	public static final String TAG = "Callback (Model.1)";
+	public static final String TAG = "Example2.Callbacks (Model.1)";
 	
 	public Model1(TextView editTextView)
 	{

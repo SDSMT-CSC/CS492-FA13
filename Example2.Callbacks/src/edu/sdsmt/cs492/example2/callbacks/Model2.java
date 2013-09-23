@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class Model2 implements TextWatcher
 {
-	public static final String TAG = "Callback (Model.2)";
+	public static final String TAG = "Example2.Callbacks (Model.2)";
 	
 	// Simply takes TextView reference and wires up addTextChangedListener.
 	public Model2(TextView editTextView)
