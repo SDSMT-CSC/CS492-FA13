@@ -14,11 +14,15 @@ public class FragmentDetail extends Fragment
 	private TextView _classDescTextView;
 	
 	private String[] _listClassDescriptions;
+	private int _currentClassID = -1;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+		
+		// Maintain fragment instance during hosting Activity's recreation
+		setRetainInstance(true);
 		
 		_listClassDescriptions = getResources().getStringArray(R.array.arrayListClassDescription);
 	}
@@ -39,8 +43,20 @@ public class FragmentDetail extends Fragment
 		super.onAttach(activity);
 	}
 	
+	@Override
+	public void onResume()
+	{
+		if (_currentClassID != -1)
+		{
+			displayClassDescription(_currentClassID);
+		}
+		
+		super.onResume();
+	}
+
 	public void displayClassDescription(int classID)
 	{
+		_currentClassID = classID;
 		_classDescTextView.setText(_listClassDescriptions[classID]);
 	}
 

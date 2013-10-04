@@ -1,10 +1,11 @@
 package edu.sdsmt.cs492.example6.fragments;
 
+import edu.sdsmt.cs492.example6.fragments.FragmentList.IOnClassSelectedListener;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.os.Bundle;
 
-public class ActivityDynamicFragmentLayout extends Activity
+public class ActivityDynamicFragmentLayout extends Activity implements IOnClassSelectedListener
 {
 
 	private FragmentList _listFragment;
@@ -17,18 +18,29 @@ public class ActivityDynamicFragmentLayout extends Activity
 		
 		setContentView(R.layout.activity_dynamic_fragment_layout);
 		
-		_listFragment = new FragmentList();
-		_detailFragment = new FragmentDetail();
-		
-		
 		FragmentManager _fragmentManager = getFragmentManager();
+		
+		if (savedInstanceState == null)
+		{
+			_listFragment = new FragmentList();
+			_detailFragment = new FragmentDetail();
+			
+			_fragmentManager.beginTransaction()
+							.add(R.id.frameList, _listFragment)
+							.add(R.id.frameDetail, _detailFragment)
+							.commit();
+		}
+		else
+		{
+			_listFragment = (FragmentList) _fragmentManager.findFragmentById(R.id.frameList);
+			_detailFragment = (FragmentDetail) _fragmentManager.findFragmentById(R.id.frameDetail);
+		}
+	}
 
-		_fragmentManager.beginTransaction()
-						.add(R.id.frameList, _listFragment)
-						.add(R.id.frameDetail, _detailFragment)
-						.commit();
-		
-		
+	@Override
+	public void onClassSelected(int classID)
+	{
+		_detailFragment.displayClassDescription(classID);
 	}
 
 }
