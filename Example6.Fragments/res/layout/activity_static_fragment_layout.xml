@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:baselineAligned="false"
+    tools:context=".ActivityStaticFragmentLayout" >
+    
+    <fragment
+        android:name="edu.sdsmt.cs492.example6.fragments.FragmentList"
+        android:id="@+id/fragmentList"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+    
+    <fragment 
+        android:name="edu.sdsmt.cs492.example6.fragments.FragmentDetail"
+        android:id="@+id/fragmentDetail"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2" />
+        
+
+</LinearLayout>

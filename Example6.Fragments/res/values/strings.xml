@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Example6.Fragments</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Main Activity -->
+    <string name="buttonStaticFragmentLayout">Static Fragment Layout</string>
+    <string name="buttonDynamicFragmentLayout">Dynamic Fragment Layout</string>
+
+    <!-- Static Fragment Layout -->
+    <string name="title_activity_static_fragment_layout">Static Layout</string>
+    
+    <!-- Dynamic Fragment Layout -->
+    <string name="title_activity_dynamic_fragment_layout">Dynamic Layout</string>
+
+    <!-- Values -->
+    <string-array name="arrayListClasses">
+        <item>CS150</item>
+        <item>CS250</item>
+        <item>CS251</item>
+        <item>CS300</item>
+        <item>CS492</item>
+    </string-array>
+    <string-array name="arrayListClassDescription">
+        <item>Computer Science I</item>
+        <item>Computer Science II</item>
+        <item>Finite Structures</item>
+        <item>Data Structures</item>
+        <item>Mobile Computing</item>
+    </string-array>
+
+</resources>
