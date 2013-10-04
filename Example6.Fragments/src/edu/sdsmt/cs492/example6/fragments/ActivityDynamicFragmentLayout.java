@@ -8,6 +8,7 @@ import android.os.Bundle;
 public class ActivityDynamicFragmentLayout extends Activity implements IOnClassSelectedListener
 {
 
+	private FragmentManager _fragmentManager;
 	private FragmentList _listFragment;
 	private FragmentDetail _detailFragment;
 	
@@ -16,15 +17,20 @@ public class ActivityDynamicFragmentLayout extends Activity implements IOnClassS
 	{
 		super.onCreate(savedInstanceState);
 		
+		// Assign the appropriate layout to the container Activity.
 		setContentView(R.layout.activity_dynamic_fragment_layout);
 		
-		FragmentManager _fragmentManager = getFragmentManager();
+		// Get a reference to the Fragment Manager to be used for
+		// dynamically adding fragments to this hosting Activity.
+		_fragmentManager = getFragmentManager();
 		
 		if (savedInstanceState == null)
 		{
+			// New instance, so create fragments and add to the activity.
 			_listFragment = new FragmentList();
 			_detailFragment = new FragmentDetail();
 			
+			// Add fragments to the appropriate frame layout containers.
 			_fragmentManager.beginTransaction()
 							.add(R.id.frameList, _listFragment)
 							.add(R.id.frameDetail, _detailFragment)
@@ -32,6 +38,7 @@ public class ActivityDynamicFragmentLayout extends Activity implements IOnClassS
 		}
 		else
 		{
+			// Fragments have already been added, just find them.
 			_listFragment = (FragmentList) _fragmentManager.findFragmentById(R.id.frameList);
 			_detailFragment = (FragmentDetail) _fragmentManager.findFragmentById(R.id.frameDetail);
 		}
@@ -40,6 +47,8 @@ public class ActivityDynamicFragmentLayout extends Activity implements IOnClassS
 	@Override
 	public void onClassSelected(int classID)
 	{
+		// Handle calllback from list fragment to display the 
+		// appropriate class description in the detail fragment.
 		_detailFragment.displayClassDescription(classID);
 	}
 

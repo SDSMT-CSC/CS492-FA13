@@ -42,7 +42,8 @@ public class FragmentList extends ListFragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		
+		// Inflate the associated fragment layout in order to send
+		// it to the holding layout.
 		View parentView = inflater.inflate(R.layout.fragment_list, container, false);
 		
 		return parentView;
@@ -67,15 +68,6 @@ public class FragmentList extends ListFragment
 					   android.R.layout.simple_list_item_activated_1, 
 					   arrayClasses));
 		
-		// During a configuration change, a position might have been 
-		// selected and needs to be re-selected when fragment is visible
-		// again.
-		if (_currentClassID != -1)
-		{
-			getListView().setItemChecked(_currentClassID, true);
-			_onClassSelected.onClassSelected(_currentClassID);
-		}
-		
 		super.onActivityCreated(savedInstanceState);
 	}
 
@@ -96,9 +88,18 @@ public class FragmentList extends ListFragment
 	}
 
 	@Override
-	public void onDetach()
+	public void onResume()
 	{
-		super.onDetach();
+		// During a configuration change, a position might have been 
+		// selected and needs to be re-selected when fragment is visible
+		// again.
+		if (_currentClassID != -1)
+		{
+			getListView().setItemChecked(_currentClassID, true);
+			_onClassSelected.onClassSelected(_currentClassID);
+		}
+		
+		super.onResume();
 	}
 
 	@Override

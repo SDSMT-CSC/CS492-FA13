@@ -12,11 +12,13 @@ public class ActivityMain extends Activity
 {
 	private Button _buttonStaticFragmentLayout;
 	private Button _buttonDynamicFragmentLayout;
+	private Button _buttonRuntimeFragmentLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.activity_main);
 		
 		_buttonStaticFragmentLayout = (Button) findViewById(R.id.buttonStaticFragmentLayout);
@@ -24,6 +26,9 @@ public class ActivityMain extends Activity
 		
 		_buttonDynamicFragmentLayout = (Button) findViewById(R.id.buttonDynamicFragmentLayout);
 		_buttonDynamicFragmentLayout.setOnClickListener(new onDynamicFragmentLayoutClick());
+		
+		_buttonRuntimeFragmentLayout = (Button) findViewById(R.id.buttonRuntimeFragmentLayout);
+		_buttonRuntimeFragmentLayout.setOnClickListener(new onRuntimeFragmentLayoutClick());
 	}
 
 	@Override
@@ -36,20 +41,16 @@ public class ActivityMain extends Activity
 	
 	public class onStaticFragmentLayoutClick implements OnClickListener
 	{
-
 		@Override
 		public void onClick(View v)
 		{
 			Intent intent = new Intent(ActivityMain.this, ActivityStaticFragmentLayout.class);
 			startActivity(intent);
-			
 		}
-		
 	}
 
 	public class onDynamicFragmentLayoutClick implements OnClickListener
 	{
-
 		@Override
 		public void onClick(View v)
 		{
@@ -57,6 +58,16 @@ public class ActivityMain extends Activity
 			startActivity(intent);
 			
 		}
-		
+	}
+	
+	public class onRuntimeFragmentLayoutClick implements OnClickListener
+	{
+		@Override
+		public void onClick(View v)
+		{
+			Intent intent = new Intent(ActivityMain.this, ActivityRuntimeFragmentLayout.class);
+			startActivity(intent);
+			
+		}
 	}
 }

@@ -7,13 +7,17 @@
     <!-- Main Activity -->
     <string name="buttonStaticFragmentLayout">Static Fragment Layout</string>
     <string name="buttonDynamicFragmentLayout">Dynamic Fragment Layout</string>
+    <string name="buttonRuntimeFragmentLayout">Runtime Fragment Layout</string>
 
     <!-- Static Fragment Layout -->
     <string name="title_activity_static_fragment_layout">Static Layout</string>
-    
+
     <!-- Dynamic Fragment Layout -->
     <string name="title_activity_dynamic_fragment_layout">Dynamic Layout</string>
-
+    
+    <!-- Runtime Fragment Layout -->
+    <string name="title_activity_runtime_fragment_layout">Runtime Fragment</string>
+    
     <!-- Values -->
     <string-array name="arrayListClasses">
         <item>CS150</item>

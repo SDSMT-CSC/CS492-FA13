@@ -22,4 +22,12 @@
         android:layout_below="@+id/buttonStaticFragmentLayout"
         android:text="@string/buttonDynamicFragmentLayout" />
 
+    <Button
+        android:id="@+id/buttonRuntimeFragmentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonDynamicFragmentLayout"
+        android:layout_below="@+id/buttonDynamicFragmentLayout"
+        android:text="@string/buttonRuntimeFragmentLayout" />
+
 </RelativeLayout>

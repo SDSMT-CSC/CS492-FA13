@@ -30,6 +30,10 @@
             android:name="edu.sdsmt.cs492.example6.fragments.ActivityDynamicFragmentLayout"
             android:label="@string/title_activity_dynamic_fragment_layout" >
         </activity>
+        <activity
+            android:name="edu.sdsmt.cs492.example6.fragments.ActivityRuntimeFragmentLayout"
+            android:label="@string/title_activity_runtime_fragment_layout" >
+        </activity>
     </application>
 
 </manifest>
