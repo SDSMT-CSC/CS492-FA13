@@ -16,8 +16,6 @@ public class FragmentList extends ListFragment
 	private IOnClassSelectedListener _onClassSelected;
 	private String[] _listClasses;
 	
-	private int _currentClassID = -1;
-
 	/**
 	 * Define listener interface that the hosting Activity needs 
 	 * to implement.
@@ -32,9 +30,6 @@ public class FragmentList extends ListFragment
 	{
 		super.onCreate(savedInstanceState);
 		
-		// Maintain fragment instance during hosting Activity's recreation
-		setRetainInstance(true);
-		
 		// Retrieve array of string values, ex. class list.
 		_listClasses = getResources().getStringArray(R.array.arrayListClasses);
 	}
@@ -44,9 +39,9 @@ public class FragmentList extends ListFragment
 	{
 		// Inflate the associated fragment layout in order to send
 		// it to the holding layout.
-		View parentView = inflater.inflate(R.layout.fragment_list, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_list, container, false);
 		
-		return parentView;
+		return rootView;
 	}
 	
 	@Override
@@ -88,27 +83,8 @@ public class FragmentList extends ListFragment
 	}
 
 	@Override
-	public void onResume()
-	{
-		// During a configuration change, a position might have been 
-		// selected and needs to be re-selected when fragment is visible
-		// again.
-		if (_currentClassID != -1)
-		{
-			getListView().setItemChecked(_currentClassID, true);
-			_onClassSelected.onClassSelected(_currentClassID);
-		}
-		
-		super.onResume();
-	}
-
-	@Override
 	public void onListItemClick(ListView listview, View view, int position, long id)
 	{
-		// Assign current position to member variable to be 
-		// returned during configuration changes, i.e. device rotation.
-		_currentClassID = position;
-		
 		// Make sure list item selected is highlighted.
 		listview.setItemChecked(position, true);
 		
@@ -116,5 +92,4 @@ public class FragmentList extends ListFragment
 		//selected.
 		_onClassSelected.onClassSelected(position);
 	}
-
 }

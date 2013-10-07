@@ -34,6 +34,10 @@
             android:name="edu.sdsmt.cs492.example6.fragments.ActivityRuntimeFragmentLayout"
             android:label="@string/title_activity_runtime_fragment_layout" >
         </activity>
+        <activity
+            android:name="edu.sdsmt.cs492.example6.fragments.ActivityFragmentBackStack"
+            android:label="@string/title_activity_fragment_back_stack" >
+        </activity>
     </application>
 
 </manifest>

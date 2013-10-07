@@ -8,16 +8,20 @@
     <string name="buttonStaticFragmentLayout">Static Fragment Layout</string>
     <string name="buttonDynamicFragmentLayout">Dynamic Fragment Layout</string>
     <string name="buttonRuntimeFragmentLayout">Runtime Fragment Layout</string>
+    <string name="buttonFragmentBackStack">Fragment Back Stack</string>
 
     <!-- Static Fragment Layout -->
     <string name="title_activity_static_fragment_layout">Static Layout</string>
 
     <!-- Dynamic Fragment Layout -->
     <string name="title_activity_dynamic_fragment_layout">Dynamic Layout</string>
-    
+
     <!-- Runtime Fragment Layout -->
     <string name="title_activity_runtime_fragment_layout">Runtime Fragment</string>
     
+    <!-- Fragment Back Stack -->
+    <string name="title_activity_fragment_back_stack">ActivityFragmentBackStack</string>
+
     <!-- Values -->
     <string-array name="arrayListClasses">
         <item>CS150</item>

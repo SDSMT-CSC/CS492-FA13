@@ -1,14 +1,10 @@
 package edu.sdsmt.cs492.example6.fragments;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentManager.OnBackStackChangedListener;
 import android.app.FragmentTransaction;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -21,7 +17,6 @@ public class ActivityRuntimeFragmentLayout extends Activity implements IOnClassS
 	private FragmentList _listFragment;
 	private FragmentDetail _detailFragment;
 	
-	private FrameLayout _listFrameLayout;
 	private FrameLayout _detailFrameLayout;
 	
 	@Override
@@ -31,7 +26,7 @@ public class ActivityRuntimeFragmentLayout extends Activity implements IOnClassS
 		
 		setContentView(R.layout.activity_runtime_fragment_layout);
 		
-		_listFrameLayout = (FrameLayout) findViewById(R.id.frameList);
+		// Get a reference to the detail frame layout.
 		_detailFrameLayout = (FrameLayout) findViewById(R.id.frameDetail);
 		
 		// Get a reference to the Fragment Manager to be used for
@@ -68,10 +63,15 @@ public class ActivityRuntimeFragmentLayout extends Activity implements IOnClassS
 		{
 			@Override
 			public void onBackStackChanged()
-			{
+			{	
 				// Register for the back button and reset the layout
 				// by removing the detail fragment.
 				setLayout();
+				
+				if (_detailFragment.isAdded() == false)
+				{
+					_listFragment.getListView().clearChoices();
+				}
 			}
 		});
 	}
@@ -84,7 +84,7 @@ public class ActivityRuntimeFragmentLayout extends Activity implements IOnClassS
 		
 		if (_detailFragment != null)
 		{
-			// If the detail fragment has not yet been added, make it happen here.
+			// If the detail fragment has not yet been added, make it happen here.		
 			if (_detailFragment.isAdded() == false)
 			{
 				_fragmentManager.beginTransaction()

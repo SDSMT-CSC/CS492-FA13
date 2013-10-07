@@ -52,4 +52,5 @@ public class ActivityDynamicFragmentLayout extends Activity implements IOnClassS
 		_detailFragment.displayClassDescription(classID);
 	}
 
+
 }

@@ -13,6 +13,7 @@ public class ActivityMain extends Activity
 	private Button _buttonStaticFragmentLayout;
 	private Button _buttonDynamicFragmentLayout;
 	private Button _buttonRuntimeFragmentLayout;
+	private Button _buttonFragmentBackStack;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -29,6 +30,9 @@ public class ActivityMain extends Activity
 		
 		_buttonRuntimeFragmentLayout = (Button) findViewById(R.id.buttonRuntimeFragmentLayout);
 		_buttonRuntimeFragmentLayout.setOnClickListener(new onRuntimeFragmentLayoutClick());
+		
+		_buttonFragmentBackStack = (Button) findViewById(R.id.buttonFragmentBackStack);
+		_buttonFragmentBackStack.setOnClickListener(new onFragmentBackStackClick());
 	}
 
 	@Override
@@ -66,6 +70,17 @@ public class ActivityMain extends Activity
 		public void onClick(View v)
 		{
 			Intent intent = new Intent(ActivityMain.this, ActivityRuntimeFragmentLayout.class);
+			startActivity(intent);
+			
+		}
+	}
+	
+	public class onFragmentBackStackClick implements OnClickListener
+	{
+		@Override
+		public void onClick(View v)
+		{
+			Intent intent = new Intent(ActivityMain.this, ActivityFragmentBackStack.class);
 			startActivity(intent);
 			
 		}
