@@ -14,6 +14,7 @@ public class ActivityMain extends Activity
 	private Button _buttonProgrammaticLayout;
 	private Button _buttonDynamicLayout;
 	private Button _buttonDynamicConfigChangeLayout;
+	private Button _buttonNoLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -23,16 +24,19 @@ public class ActivityMain extends Activity
 		setContentView(R.layout.activity_main);
 		
 		_buttonStaticLayout = (Button) findViewById(R.id.buttonDualPaneStaticLayout);
-		_buttonStaticLayout.setOnClickListener(new onStaticFragmentLayoutClick());
+		_buttonStaticLayout.setOnClickListener(new OnDualPaneStaticLayoutClick());
 		
 		_buttonProgrammaticLayout = (Button) findViewById(R.id.buttonDualPaneProgrammaticLayout);
-		_buttonProgrammaticLayout.setOnClickListener(new onDynamicFragmentLayoutClick());
+		_buttonProgrammaticLayout.setOnClickListener(new OnDualPaneProgrammaticLayoutClick());
 		
 		_buttonDynamicLayout = (Button) findViewById(R.id.buttonDynamicLayout);
-		_buttonDynamicLayout.setOnClickListener(new onRuntimeFragmentLayoutClick());
+		_buttonDynamicLayout.setOnClickListener(new OnDynamicLayoutClick());
 		
 		_buttonDynamicConfigChangeLayout = (Button) findViewById(R.id.buttonDynamicConfigChangeLayout);
-		_buttonDynamicConfigChangeLayout.setOnClickListener(new onFragmentBackStackClick());
+		_buttonDynamicConfigChangeLayout.setOnClickListener(new OnDynamicConfigChangeLayoutClick());
+		
+		_buttonNoLayout = (Button) findViewById(R.id.buttonNoLayout);
+		_buttonNoLayout.setOnClickListener(new OnNoLayoutClick());
 	}
 
 	@Override
@@ -43,7 +47,7 @@ public class ActivityMain extends Activity
 		return true;
 	}
 	
-	public class onStaticFragmentLayoutClick implements OnClickListener
+	public class OnDualPaneStaticLayoutClick implements OnClickListener
 	{
 		@Override
 		public void onClick(View v)
@@ -53,7 +57,7 @@ public class ActivityMain extends Activity
 		}
 	}
 
-	public class onDynamicFragmentLayoutClick implements OnClickListener
+	public class OnDualPaneProgrammaticLayoutClick implements OnClickListener
 	{
 		@Override
 		public void onClick(View v)
@@ -64,7 +68,7 @@ public class ActivityMain extends Activity
 		}
 	}
 	
-	public class onRuntimeFragmentLayoutClick implements OnClickListener
+	public class OnDynamicLayoutClick implements OnClickListener
 	{
 		@Override
 		public void onClick(View v)
@@ -75,12 +79,23 @@ public class ActivityMain extends Activity
 		}
 	}
 	
-	public class onFragmentBackStackClick implements OnClickListener
+	public class OnDynamicConfigChangeLayoutClick implements OnClickListener
 	{
 		@Override
 		public void onClick(View v)
 		{
 			Intent intent = new Intent(ActivityMain.this, ActivityConfigChangeDynamicLayout.class);
+			startActivity(intent);
+			
+		}
+	}
+	
+	public class OnNoLayoutClick implements OnClickListener
+	{
+		@Override
+		public void onClick(View v)
+		{
+			Intent intent = new Intent(ActivityMain.this, ActivityNoLayout.class);
 			startActivity(intent);
 			
 		}

@@ -9,6 +9,7 @@
     <string name="buttonDualPaneProgrammaticLayout">Dual Pane Programmatic Layout</string>
     <string name="buttonDynamicLayout">Dynamic Layout</string>
     <string name="buttonDynamicConfigChangeLayout">Dynamic Config Change Layout</string>
+    <string name="buttonNoLayout">No Layout</string>
 
     <!-- Static Fragment Layout -->
     <string name="title_activity_dual_pane_static_layout">Dual Pane Static Layout</string>
@@ -18,9 +19,13 @@
 
     <!-- Dynamic Fragment Layout -->
     <string name="title_activity_dynamic_layout">Dynamic Layout</string>
-    
+
     <!-- Dyanmic Config Change Layout -->
     <string name="title_activity_dynamic_config_change_layout">Dynamic Config Change Layout</string>
+    
+    <!-- No Layout -->
+    <string name="title_activity_no_layout">No Layout</string>
+    <string name="counter">0</string>
 
     <!-- Values -->
     <string-array name="arrayListClasses">
@@ -37,5 +42,5 @@
         <item>Data Structures</item>
         <item>Mobile Computing</item>
     </string-array>
-
+    
 </resources>

@@ -38,5 +38,13 @@
         android:layout_alignLeft="@+id/buttonDynamicLayout"
         android:layout_below="@+id/buttonDynamicLayout"
         android:text="@string/buttonDynamicConfigChangeLayout" />
+    
+    <Button
+        android:id="@+id/buttonNoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonDynamicConfigChangeLayout"
+        android:layout_below="@+id/buttonDynamicConfigChangeLayout"
+        android:text="@string/buttonNoLayout" />
 
 </RelativeLayout>
