@@ -23,20 +23,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="edu.sdsmt.cs492.example6.fragments.ActivityStaticFragmentLayout"
-            android:label="@string/title_activity_static_fragment_layout" >
+            android:name="edu.sdsmt.cs492.example6.fragments.ActivityDualPaneStaticLayout"
+            android:label="@string/title_activity_dual_pane_static_layout" >
         </activity>
         <activity
-            android:name="edu.sdsmt.cs492.example6.fragments.ActivityDynamicFragmentLayout"
-            android:label="@string/title_activity_dynamic_fragment_layout" >
+            android:name="edu.sdsmt.cs492.example6.fragments.ActivityDualPaneProgrammaticLayout"
+            android:label="@string/title_activity_dual_pane_programmatic_layout" >
         </activity>
         <activity
-            android:name="edu.sdsmt.cs492.example6.fragments.ActivityRuntimeFragmentLayout"
-            android:label="@string/title_activity_runtime_fragment_layout" >
+            android:name="edu.sdsmt.cs492.example6.fragments.ActivityDynamicLayout"
+            android:label="@string/title_activity_dynamic_layout" >
         </activity>
         <activity
-            android:name="edu.sdsmt.cs492.example6.fragments.ActivityFragmentBackStack"
-            android:label="@string/title_activity_fragment_back_stack" >
+            android:name="edu.sdsmt.cs492.example6.fragments.ActivityConfigChangeDynamicLayout"
+            android:label="@string/title_activity_dynamic_config_change_layout" >
         </activity>
     </application>
 

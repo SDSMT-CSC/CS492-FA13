@@ -5,7 +5,7 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.os.Bundle;
 
-public class ActivityDynamicFragmentLayout extends Activity implements IOnClassSelectedListener
+public class ActivityDualPaneProgrammaticLayout extends Activity implements IOnClassSelectedListener
 {
 
 	private FragmentManager _fragmentManager;
@@ -18,7 +18,7 @@ public class ActivityDynamicFragmentLayout extends Activity implements IOnClassS
 		super.onCreate(savedInstanceState);
 		
 		// Assign the appropriate layout to the container Activity.
-		setContentView(R.layout.activity_dynamic_fragment_layout);
+		setContentView(R.layout.activity_dual_pane_programmatic_layout);
 		
 		// Get a reference to the Fragment Manager to be used for
 		// dynamically adding fragments to this hosting Activity.

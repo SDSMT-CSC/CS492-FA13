@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import edu.sdsmt.cs492.example6.fragments.FragmentList.IOnClassSelectedListener;
 
-public class ActivityStaticFragmentLayout extends Activity implements IOnClassSelectedListener
+public class ActivityDualPaneStaticLayout extends Activity implements IOnClassSelectedListener
 {
 	private FragmentDetail _detailFragment;
 	
@@ -12,7 +12,7 @@ public class ActivityStaticFragmentLayout extends Activity implements IOnClassSe
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_static_fragment_layout);
+		setContentView(R.layout.activity_dual_pane_static_layout);
 		
 		// Get a reference to the fragment in order to make a method
 		// call to select the correct class description.

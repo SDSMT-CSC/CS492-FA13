@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:baselineAligned="false"
-    tools:context=".ActivityRuntimeFragmentLayout" >
+    tools:context=".ActivityDynamicLayout" >
     
     <FrameLayout
         android:id="@+id/frameList"

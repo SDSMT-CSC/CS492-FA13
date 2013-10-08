@@ -10,10 +10,10 @@ import android.widget.Button;
 
 public class ActivityMain extends Activity
 {
-	private Button _buttonStaticFragmentLayout;
-	private Button _buttonDynamicFragmentLayout;
-	private Button _buttonRuntimeFragmentLayout;
-	private Button _buttonFragmentBackStack;
+	private Button _buttonStaticLayout;
+	private Button _buttonProgrammaticLayout;
+	private Button _buttonDynamicLayout;
+	private Button _buttonDynamicConfigChangeLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -22,17 +22,17 @@ public class ActivityMain extends Activity
 		
 		setContentView(R.layout.activity_main);
 		
-		_buttonStaticFragmentLayout = (Button) findViewById(R.id.buttonStaticFragmentLayout);
-		_buttonStaticFragmentLayout.setOnClickListener(new onStaticFragmentLayoutClick());
+		_buttonStaticLayout = (Button) findViewById(R.id.buttonDualPaneStaticLayout);
+		_buttonStaticLayout.setOnClickListener(new onStaticFragmentLayoutClick());
 		
-		_buttonDynamicFragmentLayout = (Button) findViewById(R.id.buttonDynamicFragmentLayout);
-		_buttonDynamicFragmentLayout.setOnClickListener(new onDynamicFragmentLayoutClick());
+		_buttonProgrammaticLayout = (Button) findViewById(R.id.buttonDualPaneProgrammaticLayout);
+		_buttonProgrammaticLayout.setOnClickListener(new onDynamicFragmentLayoutClick());
 		
-		_buttonRuntimeFragmentLayout = (Button) findViewById(R.id.buttonRuntimeFragmentLayout);
-		_buttonRuntimeFragmentLayout.setOnClickListener(new onRuntimeFragmentLayoutClick());
+		_buttonDynamicLayout = (Button) findViewById(R.id.buttonDynamicLayout);
+		_buttonDynamicLayout.setOnClickListener(new onRuntimeFragmentLayoutClick());
 		
-		_buttonFragmentBackStack = (Button) findViewById(R.id.buttonFragmentBackStack);
-		_buttonFragmentBackStack.setOnClickListener(new onFragmentBackStackClick());
+		_buttonDynamicConfigChangeLayout = (Button) findViewById(R.id.buttonDynamicConfigChangeLayout);
+		_buttonDynamicConfigChangeLayout.setOnClickListener(new onFragmentBackStackClick());
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class ActivityMain extends Activity
 		@Override
 		public void onClick(View v)
 		{
-			Intent intent = new Intent(ActivityMain.this, ActivityStaticFragmentLayout.class);
+			Intent intent = new Intent(ActivityMain.this, ActivityDualPaneStaticLayout.class);
 			startActivity(intent);
 		}
 	}
@@ -58,7 +58,7 @@ public class ActivityMain extends Activity
 		@Override
 		public void onClick(View v)
 		{
-			Intent intent = new Intent(ActivityMain.this, ActivityDynamicFragmentLayout.class);
+			Intent intent = new Intent(ActivityMain.this, ActivityDualPaneProgrammaticLayout.class);
 			startActivity(intent);
 			
 		}
@@ -69,7 +69,7 @@ public class ActivityMain extends Activity
 		@Override
 		public void onClick(View v)
 		{
-			Intent intent = new Intent(ActivityMain.this, ActivityRuntimeFragmentLayout.class);
+			Intent intent = new Intent(ActivityMain.this, ActivityDynamicLayout.class);
 			startActivity(intent);
 			
 		}
@@ -80,7 +80,7 @@ public class ActivityMain extends Activity
 		@Override
 		public void onClick(View v)
 		{
-			Intent intent = new Intent(ActivityMain.this, ActivityFragmentBackStack.class);
+			Intent intent = new Intent(ActivityMain.this, ActivityConfigChangeDynamicLayout.class);
 			startActivity(intent);
 			
 		}

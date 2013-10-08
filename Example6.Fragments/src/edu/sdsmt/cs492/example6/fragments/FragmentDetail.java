@@ -1,6 +1,7 @@
 package edu.sdsmt.cs492.example6.fragments;
 
 import android.app.Fragment;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,9 +36,13 @@ public class FragmentDetail extends Fragment
 		// the holding activity.
 		View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
 		
+		// Set color to help distinguish details fragment.
+		rootView.setBackgroundColor(Color.GREEN);
+		
 		// Get a reference to the text view for assigning the 
 		// select class description.
 		_classDescTextView = (TextView) rootView.findViewById(R.id.textViewDescription);
+		_classDescTextView.setTextColor(Color.WHITE);
 		
 		return rootView;
 	}
@@ -60,9 +65,13 @@ public class FragmentDetail extends Fragment
 		// after configuration change.
 		_currentClassID = classID;
 		
-		if (classID > 0)
+		if (classID >= 0)
 		{
 			_classDescTextView.setText(_listClassDescriptions[classID]);
+		}
+		else
+		{
+			_classDescTextView.setText("");
 		}
 	}
 

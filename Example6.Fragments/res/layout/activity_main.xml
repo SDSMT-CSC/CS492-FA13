@@ -9,33 +9,34 @@
     tools:context=".ActivityMain" >
 
     <Button
-        android:id="@+id/buttonStaticFragmentLayout"
+        android:id="@+id/buttonDualPaneStaticLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:text="@string/buttonStaticFragmentLayout" />
+        android:layout_alignParentLeft="true"
+        android:text="@string/buttonDualPaneStaticLayout" />
 
     <Button
-        android:id="@+id/buttonDynamicFragmentLayout"
+        android:id="@+id/buttonDualPaneProgrammaticLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonStaticFragmentLayout"
-        android:text="@string/buttonDynamicFragmentLayout" />
+        android:layout_alignLeft="@+id/buttonDualPaneStaticLayout"
+        android:layout_below="@+id/buttonDualPaneStaticLayout"
+        android:text="@string/buttonDualPaneProgrammaticLayout" />
 
     <Button
-        android:id="@+id/buttonRuntimeFragmentLayout"
+        android:id="@+id/buttonDynamicLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/buttonDynamicFragmentLayout"
-        android:layout_below="@+id/buttonDynamicFragmentLayout"
-        android:text="@string/buttonRuntimeFragmentLayout" />
+        android:layout_alignLeft="@+id/buttonDualPaneProgrammaticLayout"
+        android:layout_below="@+id/buttonDualPaneProgrammaticLayout"
+        android:text="@string/buttonDynamicLayout" />
     
     <Button
-        android:id="@+id/buttonFragmentBackStack"
+        android:id="@+id/buttonDynamicConfigChangeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/buttonRuntimeFragmentLayout"
-        android:layout_below="@+id/buttonRuntimeFragmentLayout"
-        android:text="@string/buttonFragmentBackStack" />
+        android:layout_alignLeft="@+id/buttonDynamicLayout"
+        android:layout_below="@+id/buttonDynamicLayout"
+        android:text="@string/buttonDynamicConfigChangeLayout" />
 
 </RelativeLayout>

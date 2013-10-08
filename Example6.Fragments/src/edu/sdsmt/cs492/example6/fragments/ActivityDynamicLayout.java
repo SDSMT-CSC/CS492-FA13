@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import edu.sdsmt.cs492.example6.fragments.FragmentList.IOnClassSelectedListener;
 
-public class ActivityRuntimeFragmentLayout extends Activity implements IOnClassSelectedListener
+public class ActivityDynamicLayout extends Activity implements IOnClassSelectedListener
 {
 
 	private FragmentManager _fragmentManager;
@@ -24,7 +24,7 @@ public class ActivityRuntimeFragmentLayout extends Activity implements IOnClassS
 	{
 		super.onCreate(savedInstanceState);
 		
-		setContentView(R.layout.activity_runtime_fragment_layout);
+		setContentView(R.layout.activity_dynamic_layout);
 		
 		// Get a reference to the detail frame layout.
 		_detailFrameLayout = (FrameLayout) findViewById(R.id.frameDetail);
@@ -46,7 +46,7 @@ public class ActivityRuntimeFragmentLayout extends Activity implements IOnClassS
 							.commit();
 		}
 		else
-		{
+		{	
 			// Fragments have already been added, just find them.
 			_listFragment = (FragmentList) _fragmentManager.findFragmentById(R.id.frameList);
 			_detailFragment = (FragmentDetail) _fragmentManager.findFragmentById(R.id.frameDetail);
@@ -81,7 +81,7 @@ public class ActivityRuntimeFragmentLayout extends Activity implements IOnClassS
 	{
 		// Handle calllback from list fragment to display the 
 		// appropriate class description in the detail fragment.
-		
+				
 		if (_detailFragment != null)
 		{
 			// If the detail fragment has not yet been added, make it happen here.		
@@ -107,7 +107,7 @@ public class ActivityRuntimeFragmentLayout extends Activity implements IOnClassS
 	{
 		if (_detailFragment != null)
 		{
-			// Descide to either display or not display the detail fragment.
+			// Decide to either display or not display the detail fragment.
 		
 			if (_detailFragment.isAdded() == false)
 			{

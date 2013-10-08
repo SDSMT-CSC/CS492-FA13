@@ -5,22 +5,22 @@
     <string name="action_settings">Settings</string>
 
     <!-- Main Activity -->
-    <string name="buttonStaticFragmentLayout">Static Fragment Layout</string>
-    <string name="buttonDynamicFragmentLayout">Dynamic Fragment Layout</string>
-    <string name="buttonRuntimeFragmentLayout">Runtime Fragment Layout</string>
-    <string name="buttonFragmentBackStack">Fragment Back Stack</string>
+    <string name="buttonDualPaneStaticLayout">Dual Pane Static Layout</string>
+    <string name="buttonDualPaneProgrammaticLayout">Dual Pane Programmatic Layout</string>
+    <string name="buttonDynamicLayout">Dynamic Layout</string>
+    <string name="buttonDynamicConfigChangeLayout">Dynamic Config Change Layout</string>
 
     <!-- Static Fragment Layout -->
-    <string name="title_activity_static_fragment_layout">Static Layout</string>
+    <string name="title_activity_dual_pane_static_layout">Dual Pane Static Layout</string>
+
+    <!-- Programmatic Fragment Layout -->
+    <string name="title_activity_dual_pane_programmatic_layout">Dual Pane Programmatic Layout</string>
 
     <!-- Dynamic Fragment Layout -->
-    <string name="title_activity_dynamic_fragment_layout">Dynamic Layout</string>
-
-    <!-- Runtime Fragment Layout -->
-    <string name="title_activity_runtime_fragment_layout">Runtime Fragment</string>
+    <string name="title_activity_dynamic_layout">Dynamic Layout</string>
     
-    <!-- Fragment Back Stack -->
-    <string name="title_activity_fragment_back_stack">ActivityFragmentBackStack</string>
+    <!-- Dyanmic Config Change Layout -->
+    <string name="title_activity_dynamic_config_change_layout">Dynamic Config Change Layout</string>
 
     <!-- Values -->
     <string-array name="arrayListClasses">
