@@ -33,6 +33,7 @@ public class ActivityMain extends Activity
 		_checkBoxUseAsync = (CheckBox) findViewById(R.id.checkBoxUseAsync);
 		_checkBoxUseAsync.setChecked(false);
 		
+		// Simulate Web Call button handler.
 		_buttonSimulateWebCall = (Button) findViewById(R.id.buttonExecute);
 		_buttonSimulateWebCall.setOnClickListener(new OnClickListener()
 		{
@@ -50,6 +51,7 @@ public class ActivityMain extends Activity
 			}
 		});
 		
+		// Update View button handler.
 		_buttonUpdateView = (Button) findViewById(R.id.buttonUpdateView);
 		_buttonUpdateView.setOnClickListener(new OnClickListener ()
 		{
@@ -61,6 +63,7 @@ public class ActivityMain extends Activity
 			}
 		});
 		
+		// Get references to the text views on the screen.
 		_textViewWebCounter = (TextView) findViewById(R.id.textViewWebCounter);
 		_textViewCounter = (TextView) findViewById(R.id.textViewCounter);
 	}

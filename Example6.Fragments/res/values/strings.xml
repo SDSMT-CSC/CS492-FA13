@@ -26,6 +26,7 @@
     <!-- No Layout -->
     <string name="title_activity_no_layout">No Layout</string>
     <string name="counter">0</string>
+    <string name="buttonStart">Start</string>
 
     <!-- Values -->
     <string-array name="arrayListClasses">
