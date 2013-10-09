@@ -14,15 +14,15 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="@string/buttonStart" />
-    
-    <TextView
-        android:id="@+id/textViewCounter"
-        android:layout_width="match_parent"
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonStart"
+        android:layout_alignRight="@+id/buttonStart"
         android:layout_below="@+id/buttonStart"
-        android:gravity="center_vertical|center_horizontal"
-        android:textSize="72sp"
-        android:textStyle="bold"
-        android:text="@string/counter" />
+        android:layout_marginTop="22dp" />
 
 </RelativeLayout>

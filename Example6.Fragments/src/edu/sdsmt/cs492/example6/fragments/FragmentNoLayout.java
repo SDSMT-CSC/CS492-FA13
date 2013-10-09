@@ -9,10 +9,9 @@ public class FragmentNoLayout extends Fragment
 {
 	private IOnCounterUpdateListener _listener;
 	
-	private boolean _runCounter = false;
-	private boolean _stopCounter = false;
-	private int _currentCounter = 0;
-	private int _endCounter = 5;
+	private boolean _runProgress = false;
+	private boolean _stopProgress = false;
+	private int _currentProgress = 0;
 
 	/**
 	 * Define listener interface that the hosting Activity needs 
@@ -20,7 +19,7 @@ public class FragmentNoLayout extends Fragment
 	 */
 	public interface IOnCounterUpdateListener
 	{
-		public void onCounterUpdate(String progressText, int counter);
+		public void onCounterUpdate(int currentProgress);
 	}
 
 	@Override
@@ -60,59 +59,42 @@ public class FragmentNoLayout extends Fragment
 	}
 
 	@Override
-	public void onDetach()
+	public void onPause()
 	{
 		// Fragment has been detached from the host Activity, 
 		// so make sure the Thread does not continue to 
 		// make listener callbacks.
-		suspendCounter(false);
+		if (getActivity().isChangingConfigurations() == true)
+		{
+			suspendCounter(false);
+		}
+		else
+		{
+			// Cancel thread.
+			suspendCounter(true);
+		}
 		
-		super.onDetach();
-	}
-
-	@Override
-	public void onDestroy()
-	{
-		suspendCounter(true);
-		
-		super.onDestroy();
+		super.onPause();
 	}
 	
 	final Thread _thread = new Thread()
 	{
 
-		private static final String STARTED = "Started";
-		private static final String STOPPED = "Stopped";
-		private static final String FINISHED = "Finished";
-		
 		@Override
 		public void run()
 		{
+			int maxProgress = 500;
+			
 			while (true)
 			{
 				synchronized (this)
 				{
 					
 					// AsyncTask only run when Activity is shown.
-					while (_runCounter == true && _currentCounter <= _endCounter)
+					while (_runProgress == true && _currentProgress <= maxProgress)
 					{
-						// Displays started message
-						if (_currentCounter == 0)
-						{
-							// Set the string to Start.
-							publishProgress(STARTED, _currentCounter);
-						}
-						
-						if (_stopCounter == true)
-						{
-							publishProgress(STOPPED, _currentCounter);
-							return;
-						}
-						else
-						{
-							publishProgress("", _currentCounter);
-							_currentCounter++;
-						}
+						publishProgress(_currentProgress);
+						_currentProgress++;
 						
 						// Delay
 						try
@@ -123,11 +105,6 @@ public class FragmentNoLayout extends Fragment
 						{
 							e.printStackTrace();
 						}
-					}
-					
-					if (_runCounter == true && _currentCounter >= _endCounter)
-					{
-						publishProgress(FINISHED, _currentCounter);
 					}
 				}
 				
@@ -145,11 +122,6 @@ public class FragmentNoLayout extends Fragment
 				}
 				
 				Log.d("ISLog", "running");
-				
-				if (_stopCounter == true)
-				{
-					return;
-				}
 			}
 		}
 		
@@ -157,45 +129,32 @@ public class FragmentNoLayout extends Fragment
 	
 	public void startThread()
 	{
-		
 		// Tell the thread to start counting.
 		synchronized (_thread)
 		{
-			_runCounter = true;
+			_runProgress = true;
 			_thread.notify();
 		}
 	}
 	
-	public void restartThread(int counter)
-	{			
-		synchronized (_thread)
-		{
-			_runCounter = true;
-			_currentCounter = counter;
-			_endCounter = 5 - counter;
-			_thread.notify();
-		}
-	}
-	
-	private void publishProgress(final String progressText, final int counter)
+	private void publishProgress(final int currentProgress)
 	{
 		getActivity().runOnUiThread(new Runnable()
 		{
-			
 			@Override
 			public void run()
 			{
-				_listener.onCounterUpdate(progressText, counter);
+				_listener.onCounterUpdate(currentProgress);
 			}
 		});
 	}
 
-	private void suspendCounter(boolean endCounterThread)
+	private void suspendCounter(boolean cancel)
 	{
 		synchronized (_thread)
 		{
-			_runCounter = false;
-			_stopCounter = endCounterThread;
+			_runProgress = false;
+			_stopProgress = cancel;
 			_thread.notify();
 		}
 	}

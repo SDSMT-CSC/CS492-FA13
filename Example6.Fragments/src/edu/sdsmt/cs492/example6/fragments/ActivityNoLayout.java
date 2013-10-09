@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ProgressBar;
 import edu.sdsmt.cs492.example6.fragments.FragmentNoLayout.IOnCounterUpdateListener;
 
 public class ActivityNoLayout extends Activity implements IOnCounterUpdateListener
@@ -19,9 +19,9 @@ public class ActivityNoLayout extends Activity implements IOnCounterUpdateListen
 	private Fragment _fragmentNoLayout;
 	
 	private Button _startButton;
-	private TextView _counterText;
+	private ProgressBar _progressBar;
 	
-	private int _counterValue;
+	private int _currentProgress;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -31,28 +31,20 @@ public class ActivityNoLayout extends Activity implements IOnCounterUpdateListen
 		// Assign layout to the host activity.
 		setContentView(R.layout.activity_no_layout);
 		
-		// Get a reference to the butter and counter text view to update it. 
+		// Get a reference to the butter and progress bar to update it. 
 		_startButton = (Button)	findViewById(R.id.buttonStart);
-		_counterText = (TextView) findViewById(R.id.textViewCounter);
+		_progressBar = (ProgressBar) findViewById(R.id.progressBar);
+		
+		_progressBar.setMax(500);
 		
 		_startButton.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
 			{
-				if (_counterValue == 0 || _counterValue > 5)
-				{
-					((FragmentNoLayout) _fragmentNoLayout).startThread();
-				}
-				else
-				{
-					_counterText.setText(String.valueOf(_counterValue * 2) + " s");
-					((FragmentNoLayout) _fragmentNoLayout).restartThread(_counterValue);
-				}
+				((FragmentNoLayout) _fragmentNoLayout).startThread();
 			}
 		});
-		
-		_counterText.setText("");
 		
 		// Get a reference to the Fragment Manager in order to perform
 		// fragment transactions, i.e. add, remove, etc.
@@ -78,7 +70,9 @@ public class ActivityNoLayout extends Activity implements IOnCounterUpdateListen
 		if (savedInstanceState != null)
 		{
 			// Get the value out of the bundle.
-			_counterValue = savedInstanceState.getInt(BUNDLE_COUNTER_KEY);		
+			_currentProgress = savedInstanceState.getInt(BUNDLE_COUNTER_KEY);	
+			
+			_progressBar.setProgress(_currentProgress);
 		}
 		
 	}
@@ -90,25 +84,17 @@ public class ActivityNoLayout extends Activity implements IOnCounterUpdateListen
 		
 		// Save the current counter value to the bundle for
 		// later retrieval when the activity is restarted.
-		outState.putInt(BUNDLE_COUNTER_KEY, _counterValue);
+		outState.putInt(BUNDLE_COUNTER_KEY, _currentProgress);
 	}
 
 	@Override
-	public void onCounterUpdate(String progressText, int counter)
+	public void onCounterUpdate(int currentProgress)
 	{
-		// Update the text view with the counter value.
-		if (progressText.isEmpty() == true)
-		{
-			_counterText.setText(String.valueOf(counter * 2) + " s");
-		}
-		else
-		{
-			_counterText.setText(progressText);
-		}
+		_progressBar.setProgress(currentProgress);
 		
 		// Assign current counter value to a member
 		// which will be added to the saved instance
 		// bundle on Activity creation.
-		_counterValue = counter;
+		_currentProgress = currentProgress;
 	}
 }
