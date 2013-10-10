@@ -13,7 +13,6 @@ import edu.sdsmt.cs492.example6.fragments.FragmentNoLayout.IOnCounterUpdateListe
 public class ActivityNoLayout extends Activity implements IOnCounterUpdateListener
 {
 	private static final String FRAGMENT_NO_LAYOUT = "FragmentNoLayout";
-	private static final String BUNDLE_COUNTER_KEY = "CounterKey";
 	
 	private FragmentManager _fragmentManager;
 	private Fragment _fragmentNoLayout;
@@ -21,8 +20,6 @@ public class ActivityNoLayout extends Activity implements IOnCounterUpdateListen
 	private Button _startButton;
 	private SeekBar _progressBar;
 	
-	private int _currentProgress;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -35,16 +32,18 @@ public class ActivityNoLayout extends Activity implements IOnCounterUpdateListen
 		_startButton = (Button)	findViewById(R.id.buttonStart);
 		_progressBar = (SeekBar) findViewById(R.id.progressBar);
 		
-		_progressBar.setMax(50);
-		
 		_startButton.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
 			{
 				((FragmentNoLayout) _fragmentNoLayout).startThread();
+				
+				_startButton.setEnabled(false);
 			}
 		});
+		
+		_progressBar.setMax(FragmentNoLayout.PROGRESS_MAX);
 		
 		// Get a reference to the Fragment Manager in order to perform
 		// fragment transactions, i.e. add, remove, etc.
@@ -66,35 +65,17 @@ public class ActivityNoLayout extends Activity implements IOnCounterUpdateListen
 							.add(_fragmentNoLayout, FRAGMENT_NO_LAYOUT)
 							.commit();
 		}
-		
-		if (savedInstanceState != null)
-		{
-			// Get the value out of the bundle.
-			_currentProgress = savedInstanceState.getInt(BUNDLE_COUNTER_KEY);	
-			
-			_progressBar.setProgress(_currentProgress);
-		}
-		
 	}
 
-	@Override
-	protected void onSaveInstanceState(Bundle outState)
-	{
-		super.onSaveInstanceState(outState);
-		
-		// Save the current counter value to the bundle for
-		// later retrieval when the activity is restarted.
-		outState.putInt(BUNDLE_COUNTER_KEY, _currentProgress);
-	}
-	
 	@Override
 	public void onPause()
 	{
 		super.onPause();
 		
+		// Force Activity to finish on Home or Back button use.
 		if (isChangingConfigurations() == false)
 		{
-			_fragmentManager.popBackStackImmediate();
+			finish();
 		}
 	}
 
@@ -102,10 +83,5 @@ public class ActivityNoLayout extends Activity implements IOnCounterUpdateListen
 	public void onCounterUpdate(int currentProgress)
 	{
 		_progressBar.setProgress(currentProgress);
-		
-		// Assign current counter value to a member
-		// which will be added to the saved instance
-		// bundle on Activity creation.
-		_currentProgress = currentProgress;
 	}
 }

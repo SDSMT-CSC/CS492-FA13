@@ -3,10 +3,13 @@ package edu.sdsmt.cs492.example6.fragments;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 
 public class FragmentNoLayout extends Fragment
 {
+	public static final int PROGRESS_MAX = 50;
+	
+	private static final String THREAD_NAME = "FRAGMENT_WORKER";
+	
 	private IOnCounterUpdateListener _listener;
 	
 	private boolean _runProgress = false;
@@ -31,15 +34,10 @@ public class FragmentNoLayout extends Fragment
 		// Activity transitions through its lifecycle.
 		setRetainInstance(true);
 		
-		_thread.setName("FRAGMENT_WORKER");
+		// Assign thread name and start it.
+		_thread.setName(THREAD_NAME);
 		_thread.start();
 		
-	}
-
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
-		super.onActivityCreated(savedInstanceState);
 	}
 	
 	@Override
@@ -61,20 +59,31 @@ public class FragmentNoLayout extends Fragment
 	@Override
 	public void onPause()
 	{
-		// Fragment has been detached from the host Activity, 
-		// so make sure the Thread does not continue to 
-		// make listener callbacks.
-		if (getActivity().isChangingConfigurations() == true)
+		// Only on non-config change, stop the thread.
+		if (getActivity().isChangingConfigurations() == false)
 		{
-			suspendCounter(false);
+			synchronized (_thread)
+			{
+				_runProgress = false;
+				_stopProgress = true;
+				_thread.notify();
+			}
 		}
-		else
+
+		super.onPause();
+	}
+	
+	@Override
+	public void onDestroy()
+	{
+		synchronized (_thread)
 		{
-			// Cancel thread.
-			suspendCounter(true);
+			_runProgress = false;
+			_stopProgress = true;
+			_thread.notify();
 		}
 		
-		super.onPause();
+		super.onDestroy();
 	}
 	
 	final Thread _thread = new Thread()
@@ -83,18 +92,20 @@ public class FragmentNoLayout extends Fragment
 		@Override
 		public void run()
 		{
-			int maxProgress = 50;
-			
 			while (true)
 			{
 				synchronized (this)
 				{
-					
 					// AsyncTask only run when Activity is shown.
-					while (_runProgress == true && _currentProgress <= maxProgress)
+					while (_runProgress == true && _currentProgress <= PROGRESS_MAX)
 					{
 						publishProgress(_currentProgress);
 						_currentProgress++;
+						
+						if (_stopProgress == true)
+						{
+							return;
+						}
 						
 						// Delay
 						try
@@ -121,7 +132,10 @@ public class FragmentNoLayout extends Fragment
 					}
 				}
 				
-				Log.d("ISLog", "running");
+				if (_stopProgress == true)
+				{
+					return;
+				}
 			}
 		}
 		
@@ -147,15 +161,5 @@ public class FragmentNoLayout extends Fragment
 				_listener.onCounterUpdate(currentProgress);
 			}
 		});
-	}
-
-	private void suspendCounter(boolean cancel)
-	{
-		synchronized (_thread)
-		{
-			_runProgress = false;
-			_stopProgress = cancel;
-			_thread.notify();
-		}
 	}
 }
