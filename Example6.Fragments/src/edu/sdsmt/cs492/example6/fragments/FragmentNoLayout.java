@@ -83,7 +83,7 @@ public class FragmentNoLayout extends Fragment
 		@Override
 		public void run()
 		{
-			int maxProgress = 500;
+			int maxProgress = 50;
 			
 			while (true)
 			{
@@ -99,7 +99,7 @@ public class FragmentNoLayout extends Fragment
 						// Delay
 						try
 						{
-							wait(2000);
+							wait(1000);
 						}
 						catch (InterruptedException e)
 						{

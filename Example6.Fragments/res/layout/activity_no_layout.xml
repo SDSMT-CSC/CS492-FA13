@@ -15,14 +15,12 @@
         android:layout_centerHorizontal="true"
         android:text="@string/buttonStart" />
 
-    <ProgressBar
+    <SeekBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="10dp"
         android:layout_alignLeft="@+id/buttonStart"
-        android:layout_alignRight="@+id/buttonStart"
-        android:layout_below="@+id/buttonStart"
-        android:layout_marginTop="22dp" />
+        android:layout_below="@+id/buttonStart" />
 
 </RelativeLayout>

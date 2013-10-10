@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import edu.sdsmt.cs492.example6.fragments.FragmentNoLayout.IOnCounterUpdateListener;
 
 public class ActivityNoLayout extends Activity implements IOnCounterUpdateListener
@@ -19,7 +19,7 @@ public class ActivityNoLayout extends Activity implements IOnCounterUpdateListen
 	private Fragment _fragmentNoLayout;
 	
 	private Button _startButton;
-	private ProgressBar _progressBar;
+	private SeekBar _progressBar;
 	
 	private int _currentProgress;
 
@@ -33,9 +33,9 @@ public class ActivityNoLayout extends Activity implements IOnCounterUpdateListen
 		
 		// Get a reference to the butter and progress bar to update it. 
 		_startButton = (Button)	findViewById(R.id.buttonStart);
-		_progressBar = (ProgressBar) findViewById(R.id.progressBar);
+		_progressBar = (SeekBar) findViewById(R.id.progressBar);
 		
-		_progressBar.setMax(500);
+		_progressBar.setMax(50);
 		
 		_startButton.setOnClickListener(new OnClickListener()
 		{
@@ -85,6 +85,17 @@ public class ActivityNoLayout extends Activity implements IOnCounterUpdateListen
 		// Save the current counter value to the bundle for
 		// later retrieval when the activity is restarted.
 		outState.putInt(BUNDLE_COUNTER_KEY, _currentProgress);
+	}
+	
+	@Override
+	public void onPause()
+	{
+		super.onPause();
+		
+		if (isChangingConfigurations() == false)
+		{
+			_fragmentManager.popBackStackImmediate();
+		}
 	}
 
 	@Override
