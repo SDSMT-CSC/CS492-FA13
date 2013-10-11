@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Example7.Database</string>
+    <string name="action_menu_add_class">Add Course</string>
+    <string name="action_menu_delete_course">Delete Course</string>
+    <string name="action_menu_update_course">Update Course</string>
+
+</resources>
