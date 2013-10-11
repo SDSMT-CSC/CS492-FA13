@@ -28,8 +28,8 @@ public class ViewListFragment extends ListFragment
 		super.onCreate(savedInstanceState);
 		
 		// Insert Sample Courses
-		//Model model = new Model(getActivity());
-		//model.insertSampleCourses();
+		Model model = new Model(getActivity());
+		model.insertSampleCourses();
 		
 		setHasOptionsMenu(true);
 		
