@@ -1,5 +1,6 @@
 package edu.sdsmt.cs293.example7.database;
 
+import android.widget.ArrayAdapter;
 import edu.sdsmt.cs293.example7.database.Model.Course;
 
 public interface ICourseControlListener
@@ -9,4 +10,6 @@ public interface ICourseControlListener
 	public void insertCourse(Course course);
 	public void deleteCourse(Course course);
 	public void updateCourse(Course course);
+	public Course getCourse();
+	public ArrayAdapter<Course> getCourseArrayAdapter();
 }

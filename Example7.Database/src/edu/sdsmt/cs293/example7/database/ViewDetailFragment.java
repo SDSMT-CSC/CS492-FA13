@@ -14,9 +14,11 @@ import edu.sdsmt.cs293.example7.database.Model.Course;
 
 public class ViewDetailFragment extends Fragment
 {
-	public Course _course = null;
-
+	//IMPORTANT NOTE: There are no public members.
+	
 	private ICourseControlListener _listener;
+	private Course _course = null;
+	
 	private TextView _textViewCourseNumber;
 
 	@Override
@@ -53,7 +55,7 @@ public class ViewDetailFragment extends Fragment
 	{
 		try
 		{
-			// Assign listener reference from hosting activity.
+			// Assign listener reference from host activity.
 			_listener = (ICourseControlListener) activity;
 		}
 		catch (ClassCastException e)
@@ -75,6 +77,10 @@ public class ViewDetailFragment extends Fragment
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflator)
 	{
+		// Only provide the host activity with a menu if there is an 
+		// actual course that is being edited.  Otherwise, it is a new
+		// course and neither of the Update or Delete menu items should
+		// be available.
 		if (_course.ID > 0)
 		{
 			// Inflate the menu; this adds items to the action bar if it is present.
@@ -89,6 +95,7 @@ public class ViewDetailFragment extends Fragment
 		{
 			case R.id.action_update_course:
 			{
+				_course.CourseNumber += " | UPDATED!";
 				_listener.updateCourse(_course);
 				return true;
 			}
@@ -106,13 +113,18 @@ public class ViewDetailFragment extends Fragment
 
 	private void displayCourse()
 	{
+		// Get a reference to the course that was selected from 
+		// the list through the listener interface.
+		_course = _listener.getCourse();
+		
 		if (_course.ID > 0)
 		{
-			// Use the member Course to populate the view.
+			// Use the member Course object to populate the view.
 			_textViewCourseNumber.setText(_course.CourseNumber);
 		}
 		else
 		{
+			// Not fully implemented.
 			_textViewCourseNumber.setText("NEW COURSE COMING SOON!");
 		}
 	}

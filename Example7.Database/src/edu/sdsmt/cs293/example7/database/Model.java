@@ -1,6 +1,7 @@
 package edu.sdsmt.cs293.example7.database;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import android.content.ContentValues;
@@ -38,9 +39,8 @@ public class Model extends SQLiteOpenHelper
 	 * @author brianb
 	 *
 	 */
-	public static class Course
+	public static class Course implements Comparator<Course>
 	{
-
 		public Course()
 		{
 			ID = -1;
@@ -60,6 +60,12 @@ public class Model extends SQLiteOpenHelper
 		public String toString() 
 		{
 		    return CourseNumber;
+		}
+
+		@Override
+		public int compare(Course lhs, Course rhs)
+		{
+			return lhs.CourseNumber.compareTo(rhs.CourseNumber);
 		}
 	}
 
@@ -197,6 +203,7 @@ public class Model extends SQLiteOpenHelper
 
 	public Course getCourse(long id)
 	{
+		Course course = null;
 		
 		openDBConnection();
 		
@@ -212,13 +219,13 @@ public class Model extends SQLiteOpenHelper
 		
 		if (cursor.moveToFirst())
 		{
-			return cursorToContact(cursor);
+			course = cursorToContact(cursor);
 		}
 		
 		cursor.close();
 		closeDBConnection();
 
-		return null;
+		return course;
 	}
 	
 	public List<Course> getCourses()
@@ -286,7 +293,11 @@ public class Model extends SQLiteOpenHelper
 		}
 		
 		ContentValues values = new ContentValues();
+<<<<<<< HEAD
 		values.put(KEY_NUMBER, course.CourseNumber + temp);
+=======
+		values.put(KEY_NUMBER, course.CourseNumber);
+>>>>>>> Reworked the Fragments need for referencing Model.
 
 		return values;
 	}

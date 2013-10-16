@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:id="@+id/action_delete_course" android:icon="@android:drawable/ic_delete" android:title="@string/action_menu_delete_course"></item>
-    <item android:id="@+id/action_update_course" android:icon="@android:drawable/ic_menu_edit" android:title="@string/action_menu_update_course"></item>
+    
+    <item 
+        android:id="@+id/action_delete_course" 
+        android:icon="@android:drawable/ic_delete" 
+        android:title="@string/action_menu_delete_course" />
+    
+    <item 
+        android:id="@+id/action_update_course" 
+        android:icon="@android:drawable/ic_menu_edit" 
+        android:title="@string/action_menu_update_course" />
     
 
 </menu>
