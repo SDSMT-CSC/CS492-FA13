@@ -286,18 +286,8 @@ public class Model extends SQLiteOpenHelper
 		// Common function used to populate the ContentValues to be used in SQL
 		// insert or update methods.
 		
-		String temp = " | UPDATED!";
-		if (inserting == true)
-		{
-			temp = "";
-		}
-		
 		ContentValues values = new ContentValues();
-<<<<<<< HEAD
-		values.put(KEY_NUMBER, course.CourseNumber + temp);
-=======
 		values.put(KEY_NUMBER, course.CourseNumber);
->>>>>>> Reworked the Fragments need for referencing Model.
 
 		return values;
 	}
