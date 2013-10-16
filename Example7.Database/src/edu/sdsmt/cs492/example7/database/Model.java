@@ -1,4 +1,4 @@
-package edu.sdsmt.cs293.example7.database;
+package edu.sdsmt.cs492.example7.database;
 
 import java.util.ArrayList;
 import java.util.Comparator;

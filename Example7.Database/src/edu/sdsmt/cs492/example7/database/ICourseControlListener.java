@@ -1,7 +1,7 @@
-package edu.sdsmt.cs293.example7.database;
+package edu.sdsmt.cs492.example7.database;
 
 import android.widget.ArrayAdapter;
-import edu.sdsmt.cs293.example7.database.Model.Course;
+import edu.sdsmt.cs492.example7.database.Model.Course;
 
 public interface ICourseControlListener
 {

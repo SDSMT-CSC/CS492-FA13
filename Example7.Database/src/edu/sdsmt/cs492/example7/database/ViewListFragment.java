@@ -1,4 +1,4 @@
-package edu.sdsmt.cs293.example7.database;
+package edu.sdsmt.cs492.example7.database;
 
 
 import android.app.Activity;
@@ -9,7 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
-import edu.sdsmt.cs293.example7.database.Model.Course;
+import edu.sdsmt.cs492.example7.database.Model.Course;
 
 public class ViewListFragment extends ListFragment
 {
@@ -21,10 +21,6 @@ public class ViewListFragment extends ListFragment
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
-		// Insert Sample Courses
-		Model model = new Model(getActivity());
-		model.insertSampleCourses();
 		
 		// Tell the host activity that an options menu is
 		// associated with this fragment.

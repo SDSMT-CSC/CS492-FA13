@@ -1,4 +1,4 @@
-package edu.sdsmt.cs293.example7.database;
+package edu.sdsmt.cs492.example7.database;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
-import edu.sdsmt.cs293.example7.database.Model.Course;
+import edu.sdsmt.cs492.example7.database.Model.Course;
 
 public class MainActivity extends Activity implements ICourseControlListener
 {
@@ -63,6 +63,9 @@ public class MainActivity extends Activity implements ICourseControlListener
 		// Get single instance to the model to handle
 		// all database activity.
 		_model = Model.getInstance(this);
+		
+		// Insert Sample Courses
+		//_model.insertSampleCourses();
 		
 		refreshArrayAdapter();
 	}
