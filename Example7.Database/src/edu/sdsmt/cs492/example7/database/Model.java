@@ -116,7 +116,7 @@ public class Model extends SQLiteOpenHelper
 	{
 		// Take parameters and pass to method to populate the
 		// ContentValues data structure.
-		ContentValues values = populateContentValues(course, true);
+		ContentValues values = populateContentValues(course);
 
 		// Open the database connect, keep it close to the actual operation.
 		openDBConnection();
@@ -160,7 +160,7 @@ public class Model extends SQLiteOpenHelper
 	{
 		// Take parameters and pass to method to populate the
 		// ContentValues data structure.
-		ContentValues values = populateContentValues(course, false);
+		ContentValues values = populateContentValues(course);
 
 		// Open the database connect, keep it close to the actual operation.
 		openDBConnection();
@@ -281,7 +281,7 @@ public class Model extends SQLiteOpenHelper
 		return course;
 	}
 
-	private ContentValues populateContentValues(Course course, boolean inserting)
+	private ContentValues populateContentValues(Course course)
 	{
 		// Common function used to populate the ContentValues to be used in SQL
 		// insert or update methods.
