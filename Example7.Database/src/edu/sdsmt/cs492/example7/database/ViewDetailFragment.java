@@ -18,6 +18,7 @@ public class ViewDetailFragment extends Fragment
 	
 	private ICourseControlListener _listener;
 	private Course _course = null;
+	private boolean _isOrientationChanging = false;
 	
 	private TextView _textViewCourseNumber;
 
@@ -27,7 +28,7 @@ public class ViewDetailFragment extends Fragment
 		super.onCreate(savedInstanceState);
 
 		// Keep member variables and state, not the best approach, 
-		// but the Contact class would need to implement Parceable
+		// but the Course class would need to implement Parceable
 		// in order to be passed in Bundle (from both outside the
 		// fragment and inside the fragment on rotation).
 		setRetainInstance(true);
@@ -71,9 +72,31 @@ public class ViewDetailFragment extends Fragment
 	{
 		super.onResume();
 
+		// If we are changing orientation, use the existing _course
+		// member to populate the view.
+		if (_isOrientationChanging == false)
+		{
+			// Get a reference to the course that was selected from 
+			// the list through the listener interface.
+			_course = _listener.getCourse();
+		}
+		
 		displayCourse();
 	}
 	
+	@Override
+	public void onPause()
+	{
+		// Provides a mechanism by which the Fragment knows if the
+		// host Activity is being re-created.  If so, we will want
+		// to just use the currently selected _course object to 
+		// populate the view which is possible because we are using
+		// setRetainInstance(true).
+		_isOrientationChanging = getActivity().isChangingConfigurations();
+		
+		super.onPause();
+	}
+
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflator)
 	{
@@ -113,10 +136,6 @@ public class ViewDetailFragment extends Fragment
 
 	private void displayCourse()
 	{
-		// Get a reference to the course that was selected from 
-		// the list through the listener interface.
-		_course = _listener.getCourse();
-		
 		if (_course.ID > 0)
 		{
 			// Use the member Course object to populate the view.
