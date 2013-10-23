@@ -201,33 +201,6 @@ public class Model extends SQLiteOpenHelper
 		}
 	}
 
-	public Course getCourse(long id)
-	{
-		Course course = null;
-		
-		openDBConnection();
-		
-		// Return the specific course row based on ID passed.
-		// _id is required by SimpleCursorAdaptor.
-		Cursor cursor = _db.query(TABLE_MYCOURSES,
-				                  new String[] { KEY_ID, KEY_NUMBER},
-				                  null,
-				                  null,
-								  null,
-								  null,
-								  KEY_NUMBER);
-		
-		if (cursor.moveToFirst())
-		{
-			course = cursorToContact(cursor);
-		}
-		
-		cursor.close();
-		closeDBConnection();
-
-		return course;
-	}
-	
 	public List<Course> getCourses()
 	{
 		List<Course> courses = new ArrayList<Course>();
