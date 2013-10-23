@@ -1,6 +1,4 @@
-package com.example.example8.contentprovider.contacts;
-
-import com.example.example8.contentprovider.use.R;
+package edu.sdsmt.cs492.example9.cursorloader;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -38,6 +36,7 @@ public class ContactDetailFragment extends Fragment
 
 		return rootView;
 	}
+
 
 	@Override
 	public void onAttach(Activity activity)

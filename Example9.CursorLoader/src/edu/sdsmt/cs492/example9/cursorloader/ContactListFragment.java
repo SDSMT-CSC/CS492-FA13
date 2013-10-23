@@ -1,4 +1,4 @@
-package com.example.example8.contentprovider.contacts;
+package edu.sdsmt.cs492.example9.cursorloader;
 
 import android.app.Activity;
 import android.app.ListFragment;

@@ -1,47 +1,46 @@
-package com.example.example8.contentprovider.contacts;
+package edu.sdsmt.cs492.example9.cursorloader;
 
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.ContentResolver;
+import android.app.LoaderManager;
+import android.app.LoaderManager.LoaderCallbacks;
+import android.content.CursorLoader;
+import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.widget.CursorAdapter;
 import android.widget.SimpleCursorAdapter;
 
-import com.example.example8.contentprovider.use.R;
-
-public class MainActivity extends Activity implements IContactListener
+public class MainActivity extends Activity implements LoaderCallbacks<Cursor>, 
+                                                      IContactListener
 {
-
 	private final static String FRAGMENT_LIST_TAG = "ContactListTag";
 	private final static String FRAGMENT_DETAIL_TAG = "ContactViewTag";
+	
+	private final static int LOADER_TAG = 1;
 	
 	private final static String KEY_CONTACT_NAME = "Name";
 	private final static String KEY_CONTACT_PHONE = "Phone";
 	private final static String KEY_CONTACT_PHONE_TYPE = "Type";
 	
+	private LoaderManager _loaderManager;
+	private CursorLoader _cursorLoader;
+	private SimpleCursorAdapter _adapter;
+	
 	private FragmentManager _fragmentManager;
 	private ContactListFragment _fragmentList;
 	private ContactDetailFragment _fragmentDetail;
 	
-	private ContentResolver _contentResolver;
-	private SimpleCursorAdapter _adapter;
-	private Cursor _cursor;
-	
 	private String _contactName;
 	private String _phoneNumber;
 	private String _phoneType;
-	
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-
-		// Assign the layout to the activity.
 		setContentView(R.layout.activity_main);
 		
 		// Get a reference to the fragment manager to 
@@ -62,8 +61,8 @@ public class MainActivity extends Activity implements IContactListener
 			_fragmentDetail = new ContactDetailFragment();
 		}
 		
-		// Get a reference to a ContentResolver and query the Contacts.
-		_contentResolver = getContentResolver();
+		// Use the LoaderManager to init a cursor loader to load the
+		// contact list.
 		assignListAdapter();
 		
 		// Only add/replace the list fragment if the bundle is empty; otherwise,
@@ -77,43 +76,77 @@ public class MainActivity extends Activity implements IContactListener
 		}
 		else
 		{
-			// Device was rotated, so get the saved state.
+			// Restore the detail display values.
 			_contactName = savedInstanceState.getString(KEY_CONTACT_NAME);
 			_phoneNumber = savedInstanceState.getString(KEY_CONTACT_PHONE);
 			_phoneType = savedInstanceState.getString(KEY_CONTACT_PHONE_TYPE);
 		}
+				
 	}
 	
 	@Override
 	protected void onSaveInstanceState(Bundle outState)
 	{
-		// Store the values that are necessary for the detail
-		// fragment display so rotation is covered.
+		// Just because, save the detail display items for
+		// retrieval on configuration change.
 		outState.putString(KEY_CONTACT_NAME, _contactName);
 		outState.putString(KEY_CONTACT_PHONE, _phoneNumber);
 		outState.putString(KEY_CONTACT_PHONE_TYPE, _phoneType);
 		
 		super.onSaveInstanceState(outState);
 	}
-	
+
 	@Override
-	protected void onDestroy()
+	public Loader<Cursor> onCreateLoader(int id, Bundle args)
 	{
-		// With this implementation, the responsibility for cursor
-		// life management belongs to this activity.
-		if (_cursor != null)
-		{
-			_cursor.close();
-		}
-		_cursor = null;
+
+		// Event resulting from call to initLoader.
+		// Perform the standard query on contact provider
+		// to return a cursor to the loader.
 		
-		super.onDestroy();
+		Uri uri = ContactsContract.Contacts.CONTENT_URI;
+		
+		String[] projection = new String[]
+		{
+			ContactsContract.Contacts._ID,
+			ContactsContract.Contacts.LOOKUP_KEY,
+			ContactsContract.Contacts.DISPLAY_NAME
+		};
+
+		String selection = ContactsContract.Contacts.IN_VISIBLE_GROUP + " = ?";
+		
+		String[] selectionArgs = new String[] { "1" };
+		
+		String sortOrder = ContactsContract.Contacts.DISPLAY_NAME + " ASC";
+		
+		_cursorLoader = new CursorLoader(this, uri, projection, selection, selectionArgs, sortOrder);
+		
+		return _cursorLoader;
 	}
 
 	@Override
+	public void onLoadFinished(Loader<Cursor> loader, Cursor cursor)
+	{
+		if (_adapter != null && cursor != null)
+		{
+			_adapter.swapCursor(cursor);
+		}
+	}
+
+	@Override
+	public void onLoaderReset(Loader<Cursor> loader)
+	{
+		if (_adapter != null)
+		{
+			_adapter.swapCursor(null);
+		}
+	}
+	
+	@Override
 	public void onContactSelected(long id)
 	{
-		
+		// Just retrieve the phone number for the single
+		// contact that was selected from the list.
 		Cursor cursor = getContact(id); 
 		
 		if (cursor.moveToFirst() == true)
@@ -124,6 +157,7 @@ public class MainActivity extends Activity implements IContactListener
 			
 			int phoneType = cursor.getInt(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.TYPE));
 		
+			// Provide user-friendly representation for the type of phone.
 			if (phoneType == 1)
 			{
 				_phoneType = "(Home)";
@@ -140,11 +174,9 @@ public class MainActivity extends Activity implements IContactListener
 				_phoneType = "(Other)";
 			}
 			
+			// Display the detail fragment.
 			showDetailFragment();
 		}
-		
-		cursor.close();
-		cursor = null;
 	}
 
 	@Override
@@ -164,52 +196,36 @@ public class MainActivity extends Activity implements IContactListener
 	{
 		return _phoneType;
 	}
-
+	
 	private void assignListAdapter()
 	{
+		// Get a reference to the loader manager.
+		_loaderManager = getLoaderManager();
 		
-		// Use the content resolver to get a list of
-		// contacts from the People app content provider
-		// and assign member cursor.
-		getContacts();
-		
-		// Create the cursor adapter and assign cursor from above.
+		// Build the adapter, passing null in for the cursor.
 		_adapter = new SimpleCursorAdapter(this, 
 										   R.layout.contact_list_row, 
-										   _cursor, 
+										   null, 
 										   new String[] { ContactsContract.Contacts.DISPLAY_NAME }, 
 										   new int[] { R.id.textViewName }, 
-										   CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+										   0);
 		
-		// Assign adapter to list fragment.
+		// Assign adapter to the ListFragment underlying listview.
 		_fragmentList.setListAdapter(_adapter);
 		
-	}
-	
-	private void getContacts()
-	{
-		Uri uri = ContactsContract.Contacts.CONTENT_URI;
-		
-		String[] projection = new String[]
-		{
-			ContactsContract.Contacts._ID,
-			ContactsContract.Contacts.LOOKUP_KEY,
-			ContactsContract.Contacts.DISPLAY_NAME
-		};
-
-		String selection = ContactsContract.Contacts.IN_VISIBLE_GROUP + " = ?";
-		
-		String[] selectionArgs = new String[] { "1" };
-		
-		String sortOrder = ContactsContract.Contacts.DISPLAY_NAME + " ASC";
-		
-		_cursor = _contentResolver.query(uri, projection, selection, selectionArgs, sortOrder);
+		// Initialize the loader providing an identifier.
+		_loaderManager.initLoader(LOADER_TAG, null, this);
 	}
 	
 	private Cursor getContact(long id)
 	{
-		Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
+		// Does not use Loader because we really do not want the detail
+		// display to change if underlying contact changes.  Also, we 
+		// are only loading one contact knowing it is being done on 
+		// UI thread is acceptable.
 		
+		Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
+
 		String[] projection = new String[]
 		{
 			ContactsContract.Contacts.DISPLAY_NAME,
@@ -223,16 +239,18 @@ public class MainActivity extends Activity implements IContactListener
 		
 		String sortOrder = null;
 		
-		return _contentResolver.query(uri, projection, selection, selectionArgs, sortOrder);
+		return getContentResolver().query(uri, projection, selection, selectionArgs, sortOrder);
 	}
 
 	private void showDetailFragment()
 	{
+		
 		// Perform the fragment transaction to display the details fragment.
 		_fragmentManager.beginTransaction()
-						.replace(R.id.fragmentContainerFrame, _fragmentDetail, FRAGMENT_DETAIL_TAG)
-						.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-						.addToBackStack(null)
-						.commit();
+				        .replace(R.id.fragmentContainerFrame, _fragmentDetail, FRAGMENT_DETAIL_TAG)
+				        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+				        .addToBackStack(null)
+				        .commit();
 	}
+
 }
