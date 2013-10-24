@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Address Book</string>
+    <string name="edittext_name_hint">Name</string>
+    <string name="edittext_phone_hint">Phone</string>
+    <string name="edittext_email_hint">Email</string>
+    <string name="textview_address_label">Address</string>
+    <string name="edittext_street_hint">Street</string>
+    <string name="edittext_citystatezip_hint">City, State, Zip</string>
+    <string name="button_save">Save</string>
+    <string name="activity_addedit_contact_title">Contact</string>
+    <string name="action_menu_add_contact">Add Contact</string>
+    <string name="action_menu_delete_contact">Delete Contact</string>
+    <string name="action_menu_update_contact">Update Contact</string>
+    <string name="alert_title_missinginfo">Missing Information</string>
+    <string name="alert_message_missing_name">Name cannot be blank.</string>
+    <string name="alert_button_OK">OK</string>
+    <string name="activity_contact_list_title">Contacts</string>
+
+</resources>
