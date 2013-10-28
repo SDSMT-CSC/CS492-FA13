@@ -35,8 +35,7 @@
         <receiver
             android:name="edu.sdsmt.cs492.example13.broadcastreceiver.ordered.Receiver2"
             android:enabled="true"
-            android:exported="false"
-            android:priority="1" >
+            android:exported="false" >
             <intent-filter 
                 android:priority="1" >
                 <action android:name="edu.sdsmt.cs492.ordered.intent.show_toast" />
