@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Example12.BroadcastReceiver.Dynamic</string>
+    <string name="buttonSend">Send Broadcast Intent</string>
+
+</resources>
