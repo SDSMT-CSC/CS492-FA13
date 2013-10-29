@@ -12,20 +12,14 @@ public class IntentServiceWorker extends IntentService
 	private static final String ACTION_MAIN = "edu.sdsmt.cs492.example16.intentservice.action.MAIN";
 	private static final String EXTRA_PARAM = "edu.sdsmt.cs492.example16.intentservice.extra.PARAM";
 	
-	public static void startAction(Context context, String param)
-	{
-		// NOTE: If there is a call in progress, next call is queued up as a 
-		// function of the IntentService class.
-		Intent intent = new Intent(context, IntentServiceWorker.class);
-		intent.setAction(ACTION_MAIN);
-		intent.putExtra(EXTRA_PARAM, param);
-		context.startService(intent);
-	}
-
 	public IntentServiceWorker()
 	{
 		// Required by IntentService base class.
 		super("IntentServiceWorker");
+		
+		// Redeliver Intent if onHandleIntent dies before returning 
+		// to the system.
+		setIntentRedelivery(true);
 	}
 
 	@Override
@@ -42,6 +36,16 @@ public class IntentServiceWorker extends IntentService
 				handleAction(param);
 			}
 		}
+	}
+
+	public static void startAction(Context context, String param)
+	{
+		// NOTE: If there is a call in progress, next call is queued up as a 
+		// function of the IntentService class.
+		Intent intent = new Intent(context, IntentServiceWorker.class);
+		intent.setAction(ACTION_MAIN);
+		intent.putExtra(EXTRA_PARAM, param);
+		context.startService(intent);
 	}
 
 	private void handleAction(String param)
