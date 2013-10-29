@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.sdsmt.cs492.example16.service.intentservice"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="18" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="edu.sdsmt.cs492.example16.service.intentservice.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".IntentServiceWorker"
+            android:exported="false" >
+        </service>
+
+        <receiver
+            android:name=".Receiver"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="edu.sdsmt.cs492.example16.receiver.action.MAIN" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
