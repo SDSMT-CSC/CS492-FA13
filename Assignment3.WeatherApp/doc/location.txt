@@ -1,0 +1,13 @@
+{
+	"location": {
+		"city": "Rapid City",
+		"cityCode": null,
+		"country": "United States",
+		"dma": "764",
+		"isUs": true,
+		"lat": 44.0731,
+		"lon": -103.2051,
+		"state": "SD",
+		"zipCode": "57701"
+	}
+}

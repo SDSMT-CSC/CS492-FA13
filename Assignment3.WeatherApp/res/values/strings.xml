@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Assignment3.WeatherApp</string>
+    
+   <string name="labelTemp">Temperature:&#160;</string>
+   <string name="labelFeelsLikeTemp">Feels Like:&#160;</string>
+   <string name="labelHumidity">Humidity:&#160;</string>
+   <string name="labelChanceOfPrecip">Chance of Precipitation:&#160;</string>
+   <string name="labelAsOfTime">As Of:&#160;</string>
+   
+   <string name="pendingWebCall">pending</string>
+   
+   <string name="progressMessage">Loading Current Forecast</string>
+
+   <string name="toastNullData">Data could not be read from web service.</string>
+   
+   
+   
+    <string-array name="cityArray">
+        <item>57301|Mitchell</item>
+        <item>57701|Rapid City</item>
+        <item>02115|Boston</item>
+        <item>60611|Chicago</item>
+        <item>75254|Dallas</item>
+        <item>80202|Denver</item>
+        <item>10024|New York</item>
+        <item>92104|San Diego</item>
+        <item>94112|San Francisco</item>
+        <item>98101|Seattle</item>
+    </string-array>
+
+</resources>
