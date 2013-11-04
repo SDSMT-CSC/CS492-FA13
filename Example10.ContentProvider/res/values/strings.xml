@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Address Book</string>
+    <string name="app_name">Example10.ContentProvider</string>
     <string name="edittext_name_hint">Name</string>
     <string name="edittext_phone_hint">Phone</string>
     <string name="edittext_email_hint">Email</string>
