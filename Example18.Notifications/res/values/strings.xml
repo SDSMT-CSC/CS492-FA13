@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Example18.Notifications</string>
+    <string name="title_activity_special">ResultsActivity</string>
+    <string name="title_activity_backstack">BackstackActivity</string>
+
+    <string name="textSpecial">SPECIAL</string>
+    <string name="textBackstack">BACKSTACK</string>
+    
+    <string name="buttonRegularActivity">Regular Activity</string>
+    <string name="buttonSpecialActivity">Special Activity</string>
+    <string name="buttonBackstackActivity">Backstack Activity</string>
+
+</resources>
