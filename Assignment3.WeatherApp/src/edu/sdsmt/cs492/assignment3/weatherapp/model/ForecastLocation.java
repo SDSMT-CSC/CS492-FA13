@@ -18,12 +18,10 @@ public class ForecastLocation
 		City = null;
 		State = null;
 		Country = null;
-		CurrentForecast = null;
 	}
 
 	public String ZipCode;
 	public String City;
 	public String State;
 	public String Country;
-	public Forecast CurrentForecast;
 }
