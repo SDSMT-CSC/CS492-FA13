@@ -33,13 +33,16 @@ public class Forecast implements Parcelable
 		
 	private String _imageURL = "http://img.weather.weatherbug.com/forecast/icons/localized/500x420/en/trans/%s.png";
 	
+	public Bitmap Image;
+	
 	public Forecast()
 	{
+		Image = null;
 	}
 
-	public Forecast(Parcel parcel)
+	private Forecast(Parcel parcel)
 	{
-		
+		Image = parcel.readParcelable(Bitmap.class.getClassLoader());
 	}
 
 	@Override
@@ -51,6 +54,7 @@ public class Forecast implements Parcelable
 	@Override
 	public void writeToParcel(Parcel dest, int flags)
 	{
+		dest.writeParcelable(Image, 0);
 	}
 
 	public static final Parcelable.Creator<Forecast> Creator = new Parcelable.Creator<Forecast>()
@@ -141,38 +145,4 @@ public class Forecast implements Parcelable
 			return iconBitmap;
 		}
 	}
-
-	private byte[] convertBitmapToByteArray(Bitmap image)
-	{
-		// HINT:  Helper method to drive using Bitmap with the 
-		//        Parcelable implementation.
-		ByteArrayOutputStream stream = new ByteArrayOutputStream();
-		image.compress(Bitmap.CompressFormat.PNG, 100, stream);
-		byte[] byteArray = stream.toByteArray();
-
-		try
-		{
-			stream.close();
-		}
-		catch (IOException e)
-		{
-			Log.e(TAG, e.toString());
-		}
-		finally
-		{
-			stream = null;
-			byteArray = null;
-		}
-
-		return byteArray;
-	}
-
-	private Bitmap convertByteArrayToBitmap(byte[] data)
-	{
-		// HINT:  Helper method to drive using Bitmap with the 
-		//        Parcelable implementation.
-		Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
-		return bitmap;
-	}
-
 }
