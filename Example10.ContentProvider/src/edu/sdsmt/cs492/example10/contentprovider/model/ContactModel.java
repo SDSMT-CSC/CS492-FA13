@@ -77,9 +77,10 @@ public class ContactModel extends SQLiteOpenHelper
 		return _instance;
 	}
 
-	public void insertSampleContacts()
+	public int insertDummyContacts(boolean largeQuantity)
 	{
 		Contact contact;
+		int count = 0;
 		
 		contact = new Contact();
 		contact.Name = "Brian Butterfield";
@@ -88,6 +89,7 @@ public class ContactModel extends SQLiteOpenHelper
 		contact.Street = "123 Main Street";
 		contact.City = "Rapid City, SD";
 		insertContact(contact);
+		count++;
 		
 		contact = new Contact();
 		contact.Name = "Toni Logar";
@@ -96,6 +98,7 @@ public class ContactModel extends SQLiteOpenHelper
 		contact.Street = "123 Main Street";
 		contact.City = "Somewhere, HI";
 		insertContact(contact);
+		count++;
 		
 		contact = new Contact();
 		contact.Name = "David Springhetti";
@@ -104,20 +107,28 @@ public class ContactModel extends SQLiteOpenHelper
 		contact.Street = "123 Main Street";
 		contact.City = "Somewhere, SD";
 		insertContact(contact);
+		count++;
 		
-		for (int i = 1; i <= 300; i++)
+		if (largeQuantity == true)
 		{
-			contact = new Contact();
-			contact.Name = String.valueOf(i) + " Name";
-			contact.Phone = String.valueOf(i) + "605-555-1212";
-			contact.Email = String.valueOf(i) + "email@domain.com";
-			contact.Street = String.valueOf(i) + "123 Main Street";
-			contact.City = String.valueOf(i) + "Somewhere, HI";
-			insertContact(contact);
+			for (int i = 1; i <= 300; i++)
+			{
+				contact = new Contact();
+				contact.Name = String.valueOf(i) + " Name";
+				contact.Phone = String.valueOf(i) + "605-555-1212";
+				contact.Email = String.valueOf(i) + "email@domain.com";
+				contact.Street = String.valueOf(i) + "123 Main Street";
+				contact.City = String.valueOf(i) + "Somewhere, HI";
+				insertContact(contact);
+				
+				count++;
+			}
 		}
+		
+		return count;
 	}
 
-	public void insertContact(Contact contact)
+	public long insertContact(Contact contact)
 	{
 		// Take parameters and pass to method to populate the
 		// ContentValues data structure.
@@ -139,9 +150,11 @@ public class ContactModel extends SQLiteOpenHelper
 			// Notify any providers that an update has occurred.
 			notifyProviderOnContactChanges();
 		}
+		
+		return id;
 	}
 
-	public void updateContact(Contact contact)
+	public int updateContact(Contact contact)
 	{
 		// Take parameters and pass to method to populate the
 		// ContentValues data structure.
@@ -152,9 +165,9 @@ public class ContactModel extends SQLiteOpenHelper
 
 		// Execute query to update the specified contact.
 		int rowsAffected = _db.update(Contact.TABLE_NAME,
-				values,
-				Contact.COLUMN_ID + " = ?",
-				new String[] { String.valueOf(contact.ContactID) });
+							values,
+							Contact.COLUMN_ID + " = ?",
+							new String[] { String.valueOf(contact.ContactID) });
 
 		// Close the database connection as soon as possible.
 		closeDBConnection();
@@ -164,9 +177,11 @@ public class ContactModel extends SQLiteOpenHelper
 			// Notify any providers that an update has occurred.
 			notifyProviderOnContactChanges();
 		}
+		
+		return rowsAffected;
 	}
 
-	public void deleteContact(Contact contact)
+	public int deleteContact(Contact contact)
 	{
 		// Open the database connect, keep it close to the actual operation.
 		openDBConnection();
@@ -184,8 +199,30 @@ public class ContactModel extends SQLiteOpenHelper
 			// Notify any providers that an update has occurred.
 			notifyProviderOnContactChanges();
 		}
+		
+		return rowsAffected;
 	}
 
+	public int deleteAllContacts()
+	{
+		// Open the database connect, keep it close to the actual operation.
+		openDBConnection();
+
+		// Execute query to delete the specified contact.
+		int rowsAffected = _db.delete(Contact.TABLE_NAME, null, null);
+
+		// Close the database connection as soon as possible.
+		closeDBConnection();
+
+		if (rowsAffected > 0)
+		{
+			// Notify any providers that an update has occurred.
+			notifyProviderOnContactChanges();
+		}
+		
+		return rowsAffected;
+	}
+	
 	public Contact getContact(long contactID)
 	{
 		// Used specifically by MainActivity so the ViewContactFragment

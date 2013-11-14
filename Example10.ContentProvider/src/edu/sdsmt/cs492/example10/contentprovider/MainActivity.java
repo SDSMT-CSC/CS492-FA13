@@ -73,7 +73,7 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor>,
 		
 		// Insert Sample Contacts
 		//		ContactModel model = new ContactModel(this);
-		//		model.insertSampleContacts();
+		//		model.insertDummyContacts(true);
 	}
 	
 	@Override
