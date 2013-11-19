@@ -19,8 +19,8 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor>,
                                                       IContactControlListener
 {
 
-	private final static String FRAGMENT_CONTACT_LIST_TAG = "ContactListTag";
-	private final static String FRAGMENT_CONTACT_VIEW_TAG = "ContactViewTag";
+	public final static String FRAGMENT_CONTACT_LIST_TAG = "ContactListTag";
+	public final static String FRAGMENT_CONTACT_VIEW_TAG = "ContactViewTag";
 	
 	private final static int LOADER_TAG = 1;
 	
