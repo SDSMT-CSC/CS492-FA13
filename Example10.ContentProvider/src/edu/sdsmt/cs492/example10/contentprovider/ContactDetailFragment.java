@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import edu.sdsmt.cs492.example10.contentprovider.model.Contact;
 
-public class ViewContactFragment extends Fragment
+public class ContactDetailFragment extends Fragment
 {
 	public static final String BUNDLE_KEY_CONTACT = "ContactObject";
 	
@@ -62,7 +62,7 @@ public class ViewContactFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		// Inflate the UI.
-		View rootView = inflater.inflate(R.layout.fragment_view_contact, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_contact_detail, container, false);
 
 		// Assign instances of Views from the Layout Resource.
 		_editTextName = (EditText) rootView.findViewById(R.id.editTextName);
@@ -159,7 +159,7 @@ public class ViewContactFragment extends Fragment
 		// be available.
 		if (_contact.ContactID > 0)
 		{			
-			getActivity().getMenuInflater().inflate(R.menu.menu_contact_view, menu);
+			getActivity().getMenuInflater().inflate(R.menu.menu_contact_detail, menu);
 		}
 	}
 

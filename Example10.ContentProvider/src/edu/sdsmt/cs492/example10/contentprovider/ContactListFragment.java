@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
-public class ListContactFragment extends ListFragment
+public class ContactListFragment extends ListFragment
 {
 
 	private IContactControlListener _listener;

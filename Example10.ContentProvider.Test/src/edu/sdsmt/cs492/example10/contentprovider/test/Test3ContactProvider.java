@@ -7,7 +7,6 @@ import org.junit.Test;
 import android.database.Cursor;
 import android.net.Uri;
 import android.test.ProviderTestCase2;
-import android.test.RenamingDelegatingContext;
 import android.test.mock.MockContentResolver;
 import android.test.suitebuilder.annotation.Suppress;
 import android.util.Log;
@@ -15,24 +14,23 @@ import edu.sdsmt.cs492.example10.contentprovider.model.Contact;
 import edu.sdsmt.cs492.example10.contentprovider.model.ContactModel;
 import edu.sdsmt.cs492.example10.contentprovider.model.ContactProvider;
 
-public class ContactProviderTest extends ProviderTestCase2<ContactProvider>
+public class Test3ContactProvider extends ProviderTestCase2<ContactProvider>
 {
 
-	private static final String TAG = ContactProviderTest.class.getSimpleName();
+	private static final String TAG = Test3ContactProvider.class.getSimpleName();
 	
 	private static MockContentResolver _resolver;
 	
 	private ContactModel _contactModel;
-	private RenamingDelegatingContext _context;
 	
 	private int _numberOfContacts = 0;
 
-	public ContactProviderTest()
+	public Test3ContactProvider()
 	{
 		super(ContactProvider.class, ContactProvider.AUTHORITY);
 	}
 	
-	public ContactProviderTest(Class<ContactProvider> providerClass, String providerAuthority)
+	public Test3ContactProvider(Class<ContactProvider> providerClass, String providerAuthority)
 	{
 		super(providerClass, providerAuthority);
 	}
@@ -44,9 +42,9 @@ public class ContactProviderTest extends ProviderTestCase2<ContactProvider>
 		
 		super.setUp();
 		
-		_context = new RenamingDelegatingContext(getContext(), "test_");
-		_contactModel = ContactModel.getInstance(_context);
-		
+		// Delete and insert dummy contacts.
+		_contactModel = ContactModel.getInstance(getContext());
+		_contactModel.deleteAllContacts();
 		_numberOfContacts = _contactModel.insertDummyContacts(false);
 		
 		// http://www.flashics.com/2012/09/06/testing-content-providers-android-programming/
@@ -62,7 +60,6 @@ public class ContactProviderTest extends ProviderTestCase2<ContactProvider>
 		Log.d(TAG, "Deleted: " + _contactModel.deleteAllContacts());
 		
 		_contactModel = null;
-		_context = null;
 		
 		super.tearDown();
 	}
@@ -86,9 +83,9 @@ public class ContactProviderTest extends ProviderTestCase2<ContactProvider>
         
         Cursor result = _resolver.query(uri, projection, selection, selectionArgs, sortOrder);
         
-        assertEquals("Update expected:" + _numberOfContacts + " | actual:" + result.getCount(), result.getCount(), _numberOfContacts);
+        assertEquals("Contact query results", result.getCount(), _numberOfContacts);
         
-        assertEquals(result.getColumnCount(), Contact.COLUMN_NAMES.length);
+        assertEquals("Number of columns does not match", result.getColumnCount(), Contact.COLUMN_NAMES.length);
         
         while (result.moveToNext() == true)
         {

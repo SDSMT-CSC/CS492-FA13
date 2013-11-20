@@ -20,13 +20,13 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor>,
 {
 
 	public final static String FRAGMENT_CONTACT_LIST_TAG = "ContactListTag";
-	public final static String FRAGMENT_CONTACT_VIEW_TAG = "ContactViewTag";
+	public final static String FRAGMENT_CONTACT_DETAIL_TAG = "ContactDetailTag";
 	
 	private final static int LOADER_TAG = 1;
 	
 	private FragmentManager _fragmentManager;
-	private ListContactFragment _fragmentContactList;
-	private ViewContactFragment _fragmentViewContact;
+	private ContactListFragment _fragmentContactList;
+	private ContactDetailFragment _fragmentContactDetail;
 	
 	private LoaderManager _loaderManager;
 	private CursorLoader _cursorLoader;
@@ -46,16 +46,16 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor>,
 		// be used for adding/replacing fragments.
 		_fragmentManager = getFragmentManager();
 		
-		_fragmentContactList = (ListContactFragment) _fragmentManager.findFragmentByTag(FRAGMENT_CONTACT_LIST_TAG);
+		_fragmentContactList = (ContactListFragment) _fragmentManager.findFragmentByTag(FRAGMENT_CONTACT_LIST_TAG);
 		if (_fragmentContactList == null)
 		{
-			_fragmentContactList = new ListContactFragment();
+			_fragmentContactList = new ContactListFragment();
 		}
 		
-		_fragmentViewContact = (ViewContactFragment) _fragmentManager.findFragmentByTag(FRAGMENT_CONTACT_VIEW_TAG);
-		if (_fragmentViewContact == null)
+		_fragmentContactDetail = (ContactDetailFragment) _fragmentManager.findFragmentByTag(FRAGMENT_CONTACT_DETAIL_TAG);
+		if (_fragmentContactDetail == null)
 		{
-			_fragmentViewContact = new ViewContactFragment();
+			_fragmentContactDetail = new ContactDetailFragment();
 		}
 		
 		assignContactListFragmentAdapter();
@@ -72,8 +72,8 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor>,
 		_model = ContactModel.getInstance(this);
 		
 		// Insert Sample Contacts
-		//		ContactModel model = new ContactModel(this);
-		//		model.insertDummyContacts(true);
+//				ContactModel model = new ContactModel(this);
+//				model.insertDummyContacts(false);
 	}
 	
 	@Override
@@ -176,11 +176,11 @@ public class MainActivity extends Activity implements LoaderCallbacks<Cursor>,
 	{
 		
 		Bundle arguments = new Bundle();
-		arguments.putParcelable(ViewContactFragment.BUNDLE_KEY_CONTACT, contact);
-		_fragmentViewContact.setArguments(arguments);
+		arguments.putParcelable(ContactDetailFragment.BUNDLE_KEY_CONTACT, contact);
+		_fragmentContactDetail.setArguments(arguments);
 		
 		_fragmentManager.beginTransaction()
-				        .replace(R.id.fragmentContainerFrame, _fragmentViewContact, FRAGMENT_CONTACT_VIEW_TAG)
+				        .replace(R.id.fragmentContainerFrame, _fragmentContactDetail, FRAGMENT_CONTACT_DETAIL_TAG)
 				        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
 				        .addToBackStack(null)
 				        .commit();

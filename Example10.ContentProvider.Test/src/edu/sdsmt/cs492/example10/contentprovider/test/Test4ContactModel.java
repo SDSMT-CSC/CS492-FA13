@@ -12,10 +12,10 @@ import android.util.Log;
 import edu.sdsmt.cs492.example10.contentprovider.model.Contact;
 import edu.sdsmt.cs492.example10.contentprovider.model.ContactModel;
 
-public class ContactModelTest extends AndroidTestCase
+public class Test4ContactModel extends AndroidTestCase
 {
 
-	private static final String TAG = ContactModelTest.class.getSimpleName();
+	private static final String TAG = Test4ContactModel.class.getSimpleName();
 	private static final String NEW_NAME = "Brian G. Butterfield";
 	
 	private ContactModel _contactModel;
@@ -58,19 +58,19 @@ public class ContactModelTest extends AndroidTestCase
 	}
 
 	@Test
-	public final void testContactModel()
+	public final void test0ContactModel()
 	{
 		assertEquals("Database name incorrect!", "AddressBook.db", _contactModel.getDatabaseName());
 	}
 
 	@Test
-	public final void testGetInstance()
+	public final void test1GetInstance()
 	{
 		assertEquals(_contactModel, ContactModel.getInstance(_context));
 	}
 	
 	@Test
-	public final void testInsertContact()
+	public final void test2InsertContact()
 	{
 		Contact contact = new Contact();
 
@@ -91,7 +91,7 @@ public class ContactModelTest extends AndroidTestCase
 	}
 	
 	@Test
-	public final void testUpdateContact()
+	public final void test3UpdateContact()
 	{
 		Contact contact = new Contact();
 		int rowsAffected = -1;
@@ -113,7 +113,7 @@ public class ContactModelTest extends AndroidTestCase
 	}
 
 	@Test
-	public final void testDeleteContact()
+	public final void test4DeleteContact()
 	{
 		int rowsAffected = -1;
 		
@@ -127,7 +127,7 @@ public class ContactModelTest extends AndroidTestCase
 	}
 
 	@Test
-	public final void testGetContact()
+	public final void test5GetContact()
 	{
 
 		// *******************************************************************************
@@ -140,7 +140,7 @@ public class ContactModelTest extends AndroidTestCase
 	}
 	
 	@Test
-	public final void testQueryContact()
+	public final void test6QueryContact()
 	{
 
 		Cursor cursor = null;
@@ -156,7 +156,7 @@ public class ContactModelTest extends AndroidTestCase
 	}
 
 	@Test
-	public final void testQueryContacts()
+	public final void test7QueryContacts()
 	{
 		Cursor cursor = null;
 		
@@ -174,6 +174,10 @@ public class ContactModelTest extends AndroidTestCase
 	{
 		Cursor cursor = null;
 		long contactID = 0;
+		
+		// *******************************************************************************
+		// GET <Contact>
+		// *******************************************************************************
 		
 		cursor = _contactModel.queryContacts(Contact.COLUMN_CONTACT_NAME);
 		cursor.moveToLast();
