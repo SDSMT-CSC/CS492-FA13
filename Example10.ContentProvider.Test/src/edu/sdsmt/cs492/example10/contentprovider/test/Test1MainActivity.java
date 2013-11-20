@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.FlakyTest;
 import android.test.UiThreadTest;
 import android.widget.EditText;
 import edu.sdsmt.cs492.example10.contentprovider.ContactDetailFragment;
@@ -68,7 +69,8 @@ public class Test1MainActivity extends ActivityInstrumentationTestCase2<MainActi
 		assertTrue("No dummy contacts inserted", _numberOfContacts > 0);
 	}
 	
-	@Test
+	@Test 
+	@FlakyTest(tolerance = 2)
 	public final void test1ContactList()
 	{
 		// Good testing practice.
@@ -76,11 +78,12 @@ public class Test1MainActivity extends ActivityInstrumentationTestCase2<MainActi
 		assertTrue("At least one Contact is required.", _fragmentContactList.getListAdapter().getCount() > 0);
 	}
 	
-	@Test
+	@Test 
+	@FlakyTest(tolerance = 2)
 	public final void test2ContactDetail()
 	{
 		
-		// NOTE:  This method is not decorated with @UiThreadTest, so you have to 
+		// NOTE:  This method is annotated with @UiThreadTest, so you have to 
 		//        specifically call runOnUiThread for those methods that require
 		//        calling on the main thread.
 		
@@ -129,10 +132,11 @@ public class Test1MainActivity extends ActivityInstrumentationTestCase2<MainActi
 	
 	@Test
 	@UiThreadTest
+	@FlakyTest(tolerance = 2)
 	public final void test3StatePauseResume()
 	{
 		
-		// NOTE:  This test is decorated with @UiThreadTest, so all of the calls are executed
+		// NOTE:  This test annotated with @UiThreadTest, so all of the calls are executed
 		//        on the main thread.  Different from the previous test where a Runnable was
 		//        used to perform clicks on the UI thread.
 				
@@ -191,6 +195,7 @@ public class Test1MainActivity extends ActivityInstrumentationTestCase2<MainActi
 	}
 	
 	@Test
+	@FlakyTest(tolerance = 2)
 	public final void test4StateDestroy()
 	{
 		// Destroy the Activity.
@@ -208,6 +213,7 @@ public class Test1MainActivity extends ActivityInstrumentationTestCase2<MainActi
 	}
 	
 	@Test
+	@FlakyTest(tolerance = 2)
 	public final void test5PostCondition()
 	{
 		ContactModel _contactModel = ContactModel.getInstance(_mainActivity);

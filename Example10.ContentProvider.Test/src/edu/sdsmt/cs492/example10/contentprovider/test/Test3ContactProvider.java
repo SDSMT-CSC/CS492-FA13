@@ -64,7 +64,8 @@ public class Test3ContactProvider extends ProviderTestCase2<ContactProvider>
 		super.tearDown();
 	}
 	
-	@Override @Suppress
+	@Override 
+	@Suppress
 	public void testAndroidTestCaseSetupProperly()
 	{
 		
