@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">edu.sdsmt.WornerTillma.lab1</string>
+    <string name="title_activity_activity1">Activity1</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_activity2">Activity2</string>
+    <string name="title_activity_activity3">Activity3</string>
+    <string name="activity_one">Activity One</string><string name="activity_two">Activity Two</string>
+    <string name="activity_three">Activity Three</string><string name="on_stop">onStop()</string>
+    <string name="on_start">onStart()</string>
+    <string name="on_restart">onRestart()</string>
+    <string name="on_resume">onResume()</string>
+    <string name="on_destroy">onDestroy()</string>
+    <string name="on_pause">onPause()</string>
+    <string name="on_create">onCreate()</string>
+    <string name="state_bool">StateBoolean</string>
+    <string name="on_save_state">onSaveInstanceState()</string>
+    <string name="on_restore_state">onRestoreInstanceState()</string>
+    
+    
+    <string name="startAct2BtnTxt">Start Activity 2</string>
+    <string name="startAct3BtnTxt">Start Activity 3</string>
+    <string name="endAct2BtnTxt">Finish Activity 2</string>
+
+</resources>
