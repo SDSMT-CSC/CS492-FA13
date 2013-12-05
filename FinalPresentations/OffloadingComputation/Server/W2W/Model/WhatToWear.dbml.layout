@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="WhatToWear">
+  <DataContextMoniker Name="/WhatToWearDataContext" />
+  <nestedChildShapes>
+    <classShape Id="40d88903-2ac5-40c4-bedf-c6ca78050eb6" absoluteBounds="3.625, 1.375, 2, 6.0015283203125">
+      <DataClassMoniker Name="/WhatToWearDataContext/Clothe" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4078e23f-ba95-4365-a4fd-96593ef58e3a" absoluteBounds="3.6399999999999997, 1.835, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b03b98bf-c37d-4fdd-8a7e-fe5eb69f30f5" absoluteBounds="6.875, 1.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/WhatToWearDataContext/ClothingImage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f0c8ebdd-1c9b-4d77-b348-4879850fe78b" absoluteBounds="6.8900000000000006, 2.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.625 : 2.76044840494792); (6.875 : 2.76044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WhatToWearDataContext/Clothe/Clothe_ClothingImage" />
+      <nodes>
+        <classShapeMoniker Id="40d88903-2ac5-40c4-bedf-c6ca78050eb6" />
+        <classShapeMoniker Id="b03b98bf-c37d-4fdd-8a7e-fe5eb69f30f5" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
