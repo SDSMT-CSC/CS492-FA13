@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Météo Exemple</string>
+   <string name="labelTemp">Température:&#160;</string>
+   <string name="labelFeelsLikeTemp">Ressenti:&#160;</string>
+   <string name="labelHumidity">Humidité:&#160;</string>
+   <string name="labelChanceOfPrecip">Risque de précipitations:&#160;</string>
+   <string name="labelAsOfTime">Comme de:&#160;</string>
+   
+   <string name="pendingWebCall">Chargement en cours </string>
+   
+   <string name="progressMessage">Chargement en cours </string>
+   <string name="progressMessageForcast">Prévisions actuelles </string>
+   <string name="progressMessageLocation">Situation actuelle </string>
+
+   <string name="toastNullData">Les données ne peuvent pas être lues à partir de service web.</string>
+   
+</resources>

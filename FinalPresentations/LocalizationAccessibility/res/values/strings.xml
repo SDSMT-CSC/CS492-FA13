@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+   <string name="app_name">Weather Example</string>
+   <string name = "key">hrbvzp7zkj5caar6xkh4tm43</string>
+   <string name="labelTemp">Temperature:&#160;</string>
+   <string name="labelFeelsLikeTemp">Feels Like:&#160;</string>
+   <string name="labelHumidity">Humidity:&#160;</string>
+   <string name="labelChanceOfPrecip">Chance of Precipitation:&#160;</string>
+   <string name="labelAsOfTime">As Of:&#160;</string>
+   
+   <string name="pendingWebCall">Loading</string>
+   
+   <string name="progressMessage">Loading</string>
+   <string name="progressMessageForcast">Current Forecast </string>
+   <string name="progressMessageLocation">Current Location </string>
+
+   <string name="toastNullData">Data could not be read from web service.</string>
+   
+   
+   
+    <string name="city">57701</string>
+
+</resources>
