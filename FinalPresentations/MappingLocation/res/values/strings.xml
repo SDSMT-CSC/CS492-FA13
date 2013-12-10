@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Location &amp; Mapping</string>
+    <string name="title_activity_google_map">Google Map</string>
+    <string name="title_activity_street_view">Street View</string>
+    <string name="text_longitude">Longitude:</string>
+    <string name="text_latitude">Latitude:</string>
+    <string name="text_pending">Pending</string>
+    <string name="title_activity_location_without_maps">Location Without Maps</string>
+    <string name="button_google_map">Google Maps API</string>
+    <string name="button_streetview">Google Streetview</string>
+    <string name="button_without_map">Location Without Map</string>
+    <string name="menu_gmap_animate">Toggle Camera</string>
+    <string name="menu_gmap_markers">Toggle Markers</string>
+    <string name="menu_gmap_polygon">Toggle Polygon</string>
+    <string name="menu_gmap_circle">Toggle Circle</string>
+    <string name="menu_gmap_path">Toggle Path</string>
+
+</resources>

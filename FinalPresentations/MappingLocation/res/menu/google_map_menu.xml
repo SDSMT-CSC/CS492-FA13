@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/animate" android:title="@string/menu_gmap_animate"></item><item android:id="@+id/markers" android:title="@string/menu_gmap_markers"></item>
+    <item android:id="@+id/polygon" android:title="@string/menu_gmap_polygon"></item><item android:id="@+id/circle" android:title="@string/menu_gmap_circle"></item>
+    <item android:id="@+id/path" android:title="@string/menu_gmap_path"></item>
+    
+    
+    
+
+</menu>
