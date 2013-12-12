@@ -1,0 +1,45 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.app.MainActivity" >
+
+    <item android:id="@+id/action_device_sensor"
+        android:title="@string/action_device_sensor"
+        android:showAsAction="always">
+        <menu>
+            <item android:id="@+id/action_accelerometer"
+                android:title="@string/action_accelerometer"
+                android:showAsAction="always"/>
+            <item android:id="@+id/action_linear_acceleration"
+                android:title="@string/action_linear_acceleration"
+                android:showAsAction="always"/>
+            <item android:id="@+id/action_ambient_temp"
+                android:title="@string/action_ambient_temp"
+                android:showAsAction="always"/>
+            <item android:id="@+id/action_gravity"
+                android:title="@string/action_gravity"
+                android:showAsAction="always"/>
+            <item android:id="@+id/action_gyroscope"
+                android:title="@string/action_gyroscope"
+                android:showAsAction="always"/>
+            <item android:id="@+id/action_light"
+                android:title="@string/action_light"
+                android:showAsAction="always"/>
+            <item android:id="@+id/action_magnetic_field"
+                android:title="@string/action_magnetic_field"
+                android:showAsAction="always"/>
+            <item android:id="@+id/action_pressure"
+                android:title="@string/action_pressure"
+                android:showAsAction="always"/>
+            <item android:id="@+id/action_proximity"
+                android:title="@string/action_proximity"
+                android:showAsAction="always"/>
+            <item android:id="@+id/action_relative_humidity"
+                android:title="@string/action_relative_humidity"
+                android:showAsAction="always"/>
+            <item android:id="@+id/action_rotation_vector"
+                android:title="@string/action_rotation_vector"
+                android:showAsAction="always"/>
+        </menu>
+    </item>
+
+</menu>

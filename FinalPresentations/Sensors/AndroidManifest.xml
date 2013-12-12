@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.app"
+    android:versionCode="1"
+    android:versionName="1.0"
+    >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.app.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.app.SensorAccelerometer"
+            android:label="@string/action_accelerometer"
+            android:parentActivityName="com.example.app.MainActivity" >
+        </activity>
+        <activity
+            android:name="com.example.app.SensorAmbientTemperature"
+            android:label="@string/action_ambient_temp"
+            android:parentActivityName="com.example.app.MainActivity" >
+        </activity>
+        <activity
+            android:name="com.example.app.SensorGravity"
+            android:label="@string/action_gravity"
+            android:parentActivityName="com.example.app.MainActivity" >
+        </activity>
+        <activity
+            android:name="com.example.app.SensorGyroscope"
+            android:label="@string/action_gyroscope"
+            android:parentActivityName="com.example.app.MainActivity" >
+        </activity>
+        <activity
+            android:name="com.example.app.SensorLight"
+            android:label="@string/action_light"
+            android:parentActivityName="com.example.app.MainActivity" >
+        </activity>
+        <activity
+            android:name="com.example.app.SensorMagneticField"
+            android:label="@string/action_magnetic_field"
+            android:parentActivityName="com.example.app.MainActivity" >
+        </activity>
+        <activity
+            android:name="com.example.app.SensorPressure"
+            android:label="@string/action_pressure"
+            android:parentActivityName="com.example.app.MainActivity" >
+        </activity>
+        <activity
+            android:name="com.example.app.SensorProximity"
+            android:label="@string/action_proximity"
+            android:parentActivityName="com.example.app.MainActivity" >
+        </activity>
+        <activity
+            android:name="com.example.app.SensorRelativeHumidity"
+            android:label="@string/action_relative_humidity"
+            android:parentActivityName="com.example.app.MainActivity" >
+        </activity>
+        <activity
+            android:name="com.example.app.SensorRotationVector"
+            android:label="@string/action_rotation_vector"
+            android:parentActivityName="com.example.app.MainActivity" >
+        </activity>
+        <activity
+            android:name="com.example.app.SensorLinearAcceleration"
+            android:label="@string/action_linear_acceleration"
+            android:parentActivityName="com.example.app.MainActivity" >
+        </activity>
+    </application>
+
+</manifest>
