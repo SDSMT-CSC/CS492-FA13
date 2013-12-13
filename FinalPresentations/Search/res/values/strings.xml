@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BrinkCarpenter Address Book</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="edittext_name_hint">Name</string>
+    <string name="edittext_phone_hint">Phone #</string>
+    <string name="edittext_email_hint">Email</string>
+    <string name="edittext_address2_hint">Address Line 2</string>
+    <string name="edittext_address1_hint">Address Line 1</string>
+    <string name="button_save">Save</string>
+    <string name="menu_addContact">New Contact</string>
+    <string name="delete">Delete</string>
+    <string name="search">Search Contacts</string>
+
+</resources>
