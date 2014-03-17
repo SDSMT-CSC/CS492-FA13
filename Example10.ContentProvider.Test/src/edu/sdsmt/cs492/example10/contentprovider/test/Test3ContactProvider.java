@@ -88,7 +88,6 @@ public class Test3ContactProvider extends ProviderTestCase2<ContactProvider>
         {
             assertNotNull(e);
         }
-	    
 	}
 
 	@Test

@@ -13,7 +13,8 @@ import edu.sdsmt.cs492.example10.contentprovider.R;
 
 public class Test2AutomatedUI extends ActivityInstrumentationTestCase2<MainActivity>
 {
-	
+	//NOTE:  Extra calls to sleep() have been added for demonstration purposes.
+    //       The genymotion emulator is too fast.
 	private Solo _solo;
 
 	public Test2AutomatedUI()
@@ -66,16 +67,18 @@ public class Test2AutomatedUI extends ActivityInstrumentationTestCase2<MainActiv
 		assertTrue("Contact detail fragment did not appear.", 
 				   _solo.waitForFragmentByTag(MainActivity.FRAGMENT_CONTACT_LIST_TAG, 1000));
 		
-		_solo.enterText(0, "#1 Danny");
+		_solo.enterText(0, "Danny");
 		_solo.enterText(1, "605-390-0395");
 		_solo.enterText(2, "brianb@innovsys.com");
 		_solo.enterText(3, "123 Main Street");
 		_solo.enterText(4, "Baton Rouge, LA");
 		
+		_solo.sleep(2000);
+		
 		// Save Button
 		_solo.clickOnButton(0);  
 		
-		_solo.sleep(1000);
+		_solo.sleep(2000);
 		
 	}
 	
@@ -92,7 +95,7 @@ public class Test2AutomatedUI extends ActivityInstrumentationTestCase2<MainActiv
 		{
 			assert(true);
 			
-			_solo.sleep(1000);
+			_solo.sleep(2000);
 			
 			// Needs minimum requirements, Permissions, SDCARD, etc.
 			_solo.takeScreenshot();
@@ -113,6 +116,8 @@ public class Test2AutomatedUI extends ActivityInstrumentationTestCase2<MainActiv
 		assertTrue("Contact detail fragment did not appear.", 
 				   _solo.waitForFragmentByTag(MainActivity.FRAGMENT_CONTACT_LIST_TAG, 1000));
 		
+		_solo.sleep(2000);
+		
 		_solo.clickOnActionBarItem(R.id.action_update_contact);
 		
 		_solo.enterText(0, " Oh Danny!");
@@ -120,7 +125,7 @@ public class Test2AutomatedUI extends ActivityInstrumentationTestCase2<MainActiv
 		// Save Button
 		_solo.clickOnButton(0);  
 		
-		_solo.sleep(1000);
+		_solo.sleep(2000);
 	}
 	
 	@Test
@@ -132,6 +137,8 @@ public class Test2AutomatedUI extends ActivityInstrumentationTestCase2<MainActiv
 		
 		assertTrue("Contact detail fragment did not appear.", 
 				   _solo.waitForFragmentByTag(MainActivity.FRAGMENT_CONTACT_LIST_TAG, 1000));
+		
+		_solo.sleep(2000);
 		
 		_solo.clickOnActionBarItem(R.id.action_delete_contact);
 	}
@@ -146,16 +153,18 @@ public class Test2AutomatedUI extends ActivityInstrumentationTestCase2<MainActiv
 		assertTrue("Contact detail fragment did not appear.", 
 				   _solo.waitForFragmentByTag(MainActivity.FRAGMENT_CONTACT_LIST_TAG, 1000));
 		
-		_solo.enterText(0, "#1 Danny IS BACK!");
+		_solo.enterText(0, "Danny IS BACK!");
 		_solo.enterText(1, "605-390-0395");
 		_solo.enterText(2, "brianb@innovsys.com");
 		_solo.enterText(3, "123 Main Street");
 		_solo.enterText(4, "Baton Rouge, LA");
 		
+		_solo.sleep(2000);
+		
 		// Save Button
 		_solo.clickOnButton(0);  
 		
-		_solo.sleep(1000);
+		_solo.sleep(2000);
 		
 	}
 }
