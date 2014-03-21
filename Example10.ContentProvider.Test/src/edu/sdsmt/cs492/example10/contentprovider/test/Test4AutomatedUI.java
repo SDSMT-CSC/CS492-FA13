@@ -11,13 +11,14 @@ import com.jayway.android.robotium.solo.Solo;
 import edu.sdsmt.cs492.example10.contentprovider.MainActivity;
 import edu.sdsmt.cs492.example10.contentprovider.R;
 
-public class Test2AutomatedUI extends ActivityInstrumentationTestCase2<MainActivity>
+public class Test4AutomatedUI extends ActivityInstrumentationTestCase2<MainActivity>
 {
 	//NOTE:  Extra calls to sleep() have been added for demonstration purposes.
     //       The genymotion emulator is too fast.
+    
 	private Solo _solo;
 
-	public Test2AutomatedUI()
+	public Test4AutomatedUI()
 	{
 		super(MainActivity.class);
 	}

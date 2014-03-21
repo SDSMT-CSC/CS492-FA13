@@ -10,7 +10,7 @@ import android.util.Log;
 public class ContactModel extends SQLiteOpenHelper
 {
 
-	private static final String TAG = "AddressBookFragmentApp";
+	private static final String TAG = "Example10.ContentProvider.Model";
 
 	private static final String DATABASE_NAME = "AddressBook.db";
 	private static final int DATABASE_VERSION = 1;

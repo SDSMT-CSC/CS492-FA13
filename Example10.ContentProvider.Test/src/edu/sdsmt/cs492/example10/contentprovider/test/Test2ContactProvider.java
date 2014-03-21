@@ -14,10 +14,10 @@ import edu.sdsmt.cs492.example10.contentprovider.model.Contact;
 import edu.sdsmt.cs492.example10.contentprovider.model.ContactModel;
 import edu.sdsmt.cs492.example10.contentprovider.model.ContactProvider;
 
-public class Test3ContactProvider extends ProviderTestCase2<ContactProvider>
+public class Test2ContactProvider extends ProviderTestCase2<ContactProvider>
 {
 
-	private static final String TAG = Test3ContactProvider.class.getSimpleName();
+	private static final String TAG = Test2ContactProvider.class.getSimpleName();
 	
 	private static MockContentResolver _resolver;
 	
@@ -25,12 +25,12 @@ public class Test3ContactProvider extends ProviderTestCase2<ContactProvider>
 	
 	private int _numberOfContacts = 0;
 
-	public Test3ContactProvider()
+	public Test2ContactProvider()
 	{
 		super(ContactProvider.class, ContactProvider.AUTHORITY);
 	}
 	
-	public Test3ContactProvider(Class<ContactProvider> providerClass, String providerAuthority)
+	public Test2ContactProvider(Class<ContactProvider> providerClass, String providerAuthority)
 	{
 		super(providerClass, providerAuthority);
 	}

@@ -16,7 +16,7 @@ import edu.sdsmt.cs492.example10.contentprovider.model.Contact;
 import edu.sdsmt.cs492.example10.contentprovider.model.ContactModel;
 
 // Reference:  http://developer.android.com/tools/testing/activity_test.html#CreateTestCaseClass
-public class Test1MainActivity extends ActivityInstrumentationTestCase2<MainActivity>
+public class Test3MainActivity extends ActivityInstrumentationTestCase2<MainActivity>
 {
 	private MainActivity _mainActivity;
 	private ContactListFragment _fragmentContactList;
@@ -24,7 +24,7 @@ public class Test1MainActivity extends ActivityInstrumentationTestCase2<MainActi
 	
 	private int _numberOfContacts = 3;
 
-	public Test1MainActivity()
+	public Test3MainActivity()
 	{
 		super(MainActivity.class);
 	}

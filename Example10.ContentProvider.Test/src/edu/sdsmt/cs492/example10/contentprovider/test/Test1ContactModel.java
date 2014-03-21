@@ -12,10 +12,10 @@ import android.util.Log;
 import edu.sdsmt.cs492.example10.contentprovider.model.Contact;
 import edu.sdsmt.cs492.example10.contentprovider.model.ContactModel;
 
-public class Test4ContactModel extends AndroidTestCase
+public class Test1ContactModel extends AndroidTestCase
 {
 
-	private static final String TAG = Test4ContactModel.class.getSimpleName();
+	private static final String TAG = Test1ContactModel.class.getSimpleName();
 	private static final String NEW_NAME = "Brian G. Butterfield";
 	
 	private ContactModel _contactModel;
