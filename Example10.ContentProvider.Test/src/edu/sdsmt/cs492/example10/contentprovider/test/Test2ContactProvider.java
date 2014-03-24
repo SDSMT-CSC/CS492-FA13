@@ -72,25 +72,6 @@ public class Test2ContactProvider extends ProviderTestCase2<ContactProvider>
 	}
 	
 	@Test
-	public void testInsert()
-	{
-	 
-	    Uri uri = ContactProvider.URI_CONTACTS;
-	    Uri resultUri = null;
-	    
-	    try
-        {
-	        resultUri = _resolver.insert(uri, null);
-	        assertNotNull("Insert should not be implemented.", resultUri);
-            
-        }
-        catch (UnsupportedOperationException e)
-        {
-            assertNotNull(e);
-        }
-	}
-
-	@Test
 	public void testQuery()
 	{
 		Log.d(TAG,"testQuery() called");
@@ -115,5 +96,4 @@ public class Test2ContactProvider extends ProviderTestCase2<ContactProvider>
             Log.i(TAG, id + " : " + name);
         }
 	}
-	
 }

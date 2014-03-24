@@ -66,12 +66,17 @@ public class Test1ContactModel extends AndroidTestCase
 	@Test
 	public final void test1GetInstance()
 	{
+	    Log.i(TAG, "test1GetInstance() called");
+	    
 		assertEquals(_contactModel, ContactModel.getInstance(_context));
 	}
 	
 	@Test
 	public final void test2InsertContact()
 	{
+	    
+	    Log.i(TAG, "test2InsertContact() called");
+	    
 		Contact contact = new Contact();
 
 		long contactID = -1;
@@ -93,6 +98,8 @@ public class Test1ContactModel extends AndroidTestCase
 	@Test
 	public final void test3UpdateContact()
 	{
+	    Log.i(TAG, "test3UpdateContact() called");
+	    
 		Contact contact = new Contact();
 		int rowsAffected = -1;
 		
@@ -115,6 +122,8 @@ public class Test1ContactModel extends AndroidTestCase
 	@Test
 	public final void test4DeleteContact()
 	{
+	    Log.i(TAG, "test4DeleteContact() called");
+	    
 		int rowsAffected = -1;
 		
 		// *******************************************************************************
@@ -130,6 +139,8 @@ public class Test1ContactModel extends AndroidTestCase
 	public final void test5GetContact()
 	{
 
+	    Log.i(TAG, "test5GetContact() called");
+	    
 		// *******************************************************************************
 		// READ
 		// *******************************************************************************
@@ -143,6 +154,8 @@ public class Test1ContactModel extends AndroidTestCase
 	public final void test6QueryContact()
 	{
 
+	    Log.i(TAG, "test6QueryContact() called");
+	    
 		Cursor cursor = null;
 		
 		// *******************************************************************************
@@ -158,6 +171,8 @@ public class Test1ContactModel extends AndroidTestCase
 	@Test
 	public final void test7QueryContacts()
 	{
+	    Log.i(TAG, "test7QueryContacts() called");
+	    
 		Cursor cursor = null;
 		
 		// *******************************************************************************
