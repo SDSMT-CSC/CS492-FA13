@@ -96,4 +96,58 @@ public class Test2ContactProvider extends ProviderTestCase2<ContactProvider>
             Log.i(TAG, id + " : " + name);
         }
 	}
+	@Test
+    public void testInsert()
+    {
+
+        Uri uri = ContactProvider.URI_CONTACTS;
+        Uri resultUri = null;
+
+        try
+        {
+            resultUri = _resolver.insert(uri, null);
+            assertNotNull("Insert should not be implemented.", resultUri);
+
+        }
+        catch (UnsupportedOperationException e)
+        {
+            assertNotNull(e);
+        }
+    }
+
+    @Test
+    public void testUpdate()
+    {
+
+        Uri uri = ContactProvider.URI_CONTACTS;
+
+        try
+        {
+            int value = _resolver.update(uri, null, null, null);
+            assertNotNull("Insert should not be implemented.", value);
+
+        }
+        catch (UnsupportedOperationException e)
+        {
+            assertNotNull(e);
+        }
+    }
+
+    @Test
+    public void testDelete()
+    {
+
+        Uri uri = ContactProvider.URI_CONTACTS;
+
+        try
+        {
+            int value = _resolver.delete(uri, null, null);
+            assertNotNull("Insert should not be implemented.", value);
+
+        }
+        catch (UnsupportedOperationException e)
+        {
+            assertNotNull(e);
+        }
+    }
 }

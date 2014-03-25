@@ -168,4 +168,31 @@ public class Test4AutomatedUI extends ActivityInstrumentationTestCase2<MainActiv
 		_solo.sleep(2000);
 		
 	}
+	
+	@Test
+    public void test7AddContactWithError()
+    {
+        // Add another contact, for the enjoyment of it.
+
+        _solo.clickOnActionBarItem(R.id.action_add_contact);
+
+        assertTrue("Contact detail fragment did not appear.",
+                   _solo.waitForFragmentByTag(MainActivity.FRAGMENT_CONTACT_LIST_TAG, 1000));
+
+        //_solo.enterText(0, "Danny IS BACK!");
+        _solo.enterText(1, "605-390-0395");
+        _solo.enterText(2, "brianb@innovsys.com");
+        _solo.enterText(3, "123 Main Street");
+        _solo.enterText(4, "Baton Rouge, LA");
+
+        _solo.sleep(2000);
+
+        // Save Button
+        _solo.clickOnButton(0);
+
+        boolean alertVisible = _solo.searchText("Name cannot be blank.");
+
+        assertTrue("Dialog box was not visibile", alertVisible);
+
+    }
 }
